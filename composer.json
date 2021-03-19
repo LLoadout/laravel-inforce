@@ -1,6 +1,6 @@
 {
     "name": "lloadout/enforce",
-    "description": "A toolset to kickstart your application on top of Laravel Jetstream and Spatie Permissions.",
+    "description": "A toolset to kickstart your application on top of Laravel Livewire, Laravel Jetstream and Spatie Permissions.",
     "type": "library",
     "license": "MIT",
     "authors": [
