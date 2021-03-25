@@ -28,8 +28,8 @@
                     <x-jet-label for="name" value="{{ __('Menu parent') }}"/>
                     <select wire:model.defer="menu.parent_id" id="parent_id" name="parent_id" autocomplete="activity_id" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <option value="0">{{ __('Choose') }}</option>
-                        @foreach($parents as $id => $name)
-                            <option value="{{ $id }}">{{ $name }}</option>
+                        @foreach($parents as $id => $label)
+                            <option value="{{ $id }}">{{ $label }}</option>
                         @endforeach
                     </select>
                     <x-jet-input-error for="permission.parent" class="mt-2"/>
@@ -43,7 +43,7 @@
         </x-jet-form-section>
         <x-jet-section-border/>
 
-        <x-jet-form-section submit="updatePermission">
+        <x-jet-form-section submit="updateMenu">
 
             <x-slot name="title">
                 {{ __('Perks') }}
@@ -54,14 +54,20 @@
             </x-slot>
             <x-slot name="form">
                 <div class="col-span-6 sm:col-span-4">
+                    <x-jet-label for="sort_order" value="{{ __('Sort order') }}"/>
+                    <x-jet-input id="sort_order" type="text" class="mt-1 block w-full" wire:model.defer="menu.sort_order" autocomplete="sort order "/>
+                </div>
+                <div class="col-span-6 sm:col-span-4">
                     <x-jet-label for="permission" value="{{ __('Permission') }}"/>
                     <x-jet-input id="permission" type="text" class="mt-1 block w-full" wire:model.debounce.250ms="menu.permission" autocomplete="route"/>
                 </div>
+                @if(empty($menu->parent_id))
                 <div class="col-span-6 sm:col-span-4">
                     <x-jet-label for="icon" value="{{ __('Menu icon') }}" />
                     <x-jet-input id="icon" type="text" class="mt-1 block w-full" wire:model.defer="menu.icon" autocomplete="icon"/>
                     <x-jet-input-error for="menu.icon" class="mt-2"/>
                 </div>
+                    @endif
             </x-slot>
             <x-slot name="actions">
                 <x-jet-action-message class="mr-3" on="saved">

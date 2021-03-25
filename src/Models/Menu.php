@@ -12,6 +12,10 @@ class Menu extends Model
      */
     public function menu()
     {
-        return $this->hasMany(Menu::class, 'parent_id', 'id')->with('menu');
+        return $this->hasMany(Menu::class, 'parent_id', 'id')->withCount('parent')->with('menu');
+    }
+
+    public function parent(){
+        return $this->belongsTo(Menu::class,'parent_id','id');
     }
 }

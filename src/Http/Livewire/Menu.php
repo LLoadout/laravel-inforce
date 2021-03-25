@@ -9,6 +9,7 @@ class Menu extends Component
 
     public $menu;
     public $parents;
+    public $htmlicon;
 
     protected function rules()
     {
@@ -17,7 +18,8 @@ class Menu extends Component
             'menu.route'      => 'nullable|string',
             'menu.icon'       => 'nullable|string',
             'menu.permission' => 'nullable|string',
-            'menu.parent_id'  => 'nullable|integer'
+            'menu.parent_id'  => 'nullable|integer',
+            'menu.sort_order' => 'nullable|integer',
         ];
     }
 
@@ -39,7 +41,7 @@ class Menu extends Component
 
     public function render()
     {
-        $menus = \LLoadoutEnforce\Models\Menu::whereNull('parent_id')->with('menu')->get();
+        $menus = $this->menusWithPrefix();
         return view('LLoadoutEnforce-views::menu-ui.menu', compact('menus'));
 
     }
@@ -49,13 +51,20 @@ class Menu extends Component
         $this->menu->delete();
     }
 
-    public function updatePermission()
+    public function updateMenu()
     {
         $this->validate();
         $this->menu->save();
         $this->emit('menuUpdated');
         $this->emit('saved');
 
+    }
+
+    private function menusWithPrefix()
+    {
+        return \LLoadoutEnforce\Models\Menu::with('menu')->get()->transform(function($menu){
+
+        });
     }
 
 }

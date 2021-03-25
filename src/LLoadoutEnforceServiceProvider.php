@@ -24,26 +24,10 @@ class LLoadoutEnforceServiceProvider extends PackageServiceProvider
         $this->loadAssets()->publishAssets();
     }
 
-    public function boot()
-    {
-        Livewire::component('access', Access::class);
-        Livewire::component('permission', Permission::class);
-        Livewire::component('permissions-table', PermissionsTable::class);
-
-        Livewire::component('menu', Menu::class);
-        Livewire::component('menus-table', MenusTable::class);
-        Livewire::component('navigation', Navigation::class);
-
-        Livewire::component('roles-table', RolesTable::class);
-        Livewire::component('users-table', UsersTable::class);
-        Livewire::component('user', User::class);
-        Livewire::component('role', Role::class);
-    }
-
-
     private function loadAssets()
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'LLoadoutEnforce-views');
+        $this->loadLivewireComponents();
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         return $this;
     }
@@ -68,5 +52,21 @@ class LLoadoutEnforceServiceProvider extends PackageServiceProvider
         ], 'LLoadoutEnforce-installer');
 
         return $this;
+    }
+
+    private function loadLivewireComponents()
+    {
+        Livewire::component('access', Access::class);
+        Livewire::component('permission', Permission::class);
+        Livewire::component('permissions-table', PermissionsTable::class);
+
+        Livewire::component('menu', Menu::class);
+        Livewire::component('menus-table', MenusTable::class);
+        Livewire::component('navigation', Navigation::class);
+
+        Livewire::component('roles-table', RolesTable::class);
+        Livewire::component('users-table', UsersTable::class);
+        Livewire::component('user', User::class);
+        Livewire::component('role', Role::class);
     }
 }
