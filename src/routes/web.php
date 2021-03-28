@@ -21,10 +21,10 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::get('/access', Access::class)->name('users.access');
 
-    Route::get('/permissions', Permissions::class)->name('permissions');
+    Route::get('/permissions', Permissions::class)->name('developers.permissions');
     Route::get('/permission/{permission?}', Permission::class)->name('permission');
 
-    Route::get('/menus', Menus::class)->name('menus');
+    Route::get('/menus', Menus::class)->name('developers.menus');
     Route::get('/menu/{menu?}', Menu::class)->name('menu');
 
 });

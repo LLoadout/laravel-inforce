@@ -13,6 +13,12 @@
 
         <x-slot name="description">
             {{ __('Permissions can have a dotted notation') }}
+<br/>
+            @verbatim
+                <br />@can(@endverbatim'{{ $permission->name }}'@verbatim)<br/>
+                &nbsp;&nbsp;//<br/>
+                @endcan<br/>
+            @endverbatim
         </x-slot>
 
         <x-slot name="form">

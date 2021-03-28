@@ -4,10 +4,13 @@ namespace LLoadoutEnforce\Http\Livewire;
 
 use Hash;
 use Livewire\Component;
+use LLoadoutEnforce\Http\Livewire\Traits\HandlesPermissions;
+use LLoadoutEnforce\Http\Livewire\Traits\ShowPerks;
 use Spatie\Permission\Models\Role;
 
 class User extends Component
 {
+    use HandlesPermissions, ShowPerks;
 
     public $user;
     public $userRoles = [];
@@ -25,6 +28,7 @@ class User extends Component
     public function mount(\App\Models\User $user)
     {
         $this->user = $user;
+        $this->forUser($this->user);
         $this->userRoles = $this->user->roles->pluck('id');
     }
 

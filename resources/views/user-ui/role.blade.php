@@ -32,4 +32,20 @@
             </x-jet-button>
         </x-slot>
     </x-jet-form-section>
+    <x-jet-section-border/>
+    <div class="md:grid md:grid-cols-3 md:gap-6">
+        <x-jet-section-title>
+            <x-slot name="title">
+                {{ __('Permissions') }}
+            </x-slot>
+            <x-slot name="description">
+                {{ __('These are the role specific permissions') }}
+            </x-slot>
+        </x-jet-section-title>
+        <div class="mt-5 md:mt-0 md:col-span-2">
+            <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-md">
+                @include('LLoadoutEnforce-views::user-ui.access')
+            </div>
+        </div>
+    </div>
 </div>

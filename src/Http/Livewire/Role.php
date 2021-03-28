@@ -2,11 +2,12 @@
 
 namespace LLoadoutEnforce\Http\Livewire;
 
-
 use Livewire\Component;
+use LLoadoutEnforce\Http\Livewire\Traits\HandlesPermissions;
 
 class Role extends Component
 {
+    use HandlesPermissions;
 
     public $role;
 
@@ -20,6 +21,7 @@ class Role extends Component
     public function mount(\Spatie\Permission\Models\Role $role)
     {
         $this->role = $role;
+        $this->forRole($this->role);
     }
 
     public function render()

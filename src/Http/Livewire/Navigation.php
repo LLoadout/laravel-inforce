@@ -3,10 +3,14 @@
 namespace LLoadoutEnforce\Http\Livewire;
 
 use Livewire\Component;
+use LLoadoutEnforce\Http\Livewire\Traits\ShowPerks;
 
 class Navigation extends Component
 {
+    use  ShowPerks;
+
     protected $listeners = ['menuUpdated' => 'render'];
+
 
     public function render()
     {
@@ -16,51 +20,7 @@ class Navigation extends Component
 
     private function getMenus()
     {
-        $menus = \LLoadoutEnforce\Models\Menu::whereNull('parent_id')->with('menu')->get()->toBase();
-        $menus->push($this->buildUsermenu());
-        $menus->push($this->buildDevelopermenu());
-        return $menus;
-    }
-
-    private function buildUsermenu()
-    {
-        $menu       = new \LLoadoutEnforce\Models\Menu();
-        $menu->name = __('User management');
-
-        $subMenu        = new \LLoadoutEnforce\Models\Menu();
-        $subMenu->name  = __('Manage users');
-        $subMenu->route = 'users.index';
-        $menu->menu[] = $subMenu;
-
-        $subMenu        = new \LLoadoutEnforce\Models\Menu();
-        $subMenu->name  = __('Manage roles');
-        $subMenu->route = 'users.roles';
-        $menu->menu[]   = $subMenu;
-
-        $subMenu        = new \LLoadoutEnforce\Models\Menu();
-        $subMenu->name  = __('Manage access');
-        $subMenu->route = 'users.access';
-        $menu->menu[]   = $subMenu;
-
-        return $menu;
-    }
-
-    private function buildDevelopermenu()
-    {
-        $menu       = new \LLoadoutEnforce\Models\Menu();
-        $menu->name = __('Developer menu');
-
-        $subMenu        = new \LLoadoutEnforce\Models\Menu();
-        $subMenu->name  = __('Permissions');
-        $subMenu->route = 'permissions';
-        $menu->menu[] = $subMenu;
-
-        $subMenu        = new \LLoadoutEnforce\Models\Menu();
-        $subMenu->name  = __('Menus');
-        $subMenu->route = 'menus';
-        $menu->menu[]   = $subMenu;
-
-        return $menu;
+        return \LLoadoutEnforce\Models\Menu::whereNull('parent_id')->with('menu')->orderBy('sort_order')->get()->toBase();
     }
 
 }

@@ -18,13 +18,19 @@ a ui to link users to roles and assign permissions to roles.
 
 It provides a ui for navigation management and navigation permissions.
 
+### Assets 
 
+LLoadout enforce uses some default menus and permissions, these can be created via the provided migrations and seeder.
 
-### Publish files
+```shell
+php artisan vendor:publish --tag=LLoadoutEnforce-migrations
+php artisan vendor:publish --tag=LLoadoutEnforce-seeders
+php artisan db:seed --class=EnforceSeeder
+```shell
+
+### Publish optional assets
 
 ```shell
 php artisan vendor:publish --tag=LLoadoutEnforce-views
-php artisan vendor:publish --tag=LLoadoutEnforce-seeders
-php artisan vendor:publish --tag=LLoadoutEnforce-stubs
 ```
 

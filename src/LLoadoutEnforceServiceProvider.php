@@ -36,7 +36,7 @@ class LLoadoutEnforceServiceProvider extends PackageServiceProvider
     {
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views'),
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/loadout'),
         ], 'LLoadoutEnforce-views');
 
         $this->publishes([
@@ -44,12 +44,8 @@ class LLoadoutEnforceServiceProvider extends PackageServiceProvider
         ], 'LLoadoutEnforce-seeders');
 
         $this->publishes([
-            __DIR__ . '/../stubs/navigation.stub.php' => base_path('navigation.stub.php'),
-        ], 'LLoadoutEnforce-stubs');
-
-        $this->publishes([
-            __DIR__ . '/../src/install.sh' => base_path('install.sh'),
-        ], 'LLoadoutEnforce-installer');
+            __DIR__.'/../database/migrations/create_enforce_tables.php.stub' => base_path('database/migrations/'. date('Y_m_d_His').'_create_enforce_tables.php'),
+        ], 'LLoadoutEnforce-migrations');
 
         return $this;
     }

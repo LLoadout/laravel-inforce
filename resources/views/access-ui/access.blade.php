@@ -10,10 +10,9 @@
             <div class="container mx-auto">
                 <div class="grid grid-cols-3 rounded-md ">
                     <div>
-                        <!-- This example requires Tailwind CSS v2.0+ -->
                         <nav aria-label="Sidebar">
                             @foreach($roles as $role)
-                                <a href="#" wire:click="forRole({{ $role->id }})" class="@if(optional($this->selectedRole)->id === $role->id) bg-gray-100 @endif py-4 m-4 text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                                <a href="#" wire:click="forRole({{ $role->id }})" class="@if(optional($this->selectedModel)->id === $role->id) bg-gray-100 @endif py-4 m-4 text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                     <span class="truncate">{{ $role->name }}</span>
                                 </a>
                             @endforeach
@@ -21,10 +20,10 @@
 
                     </div>
                     <div>
-                        @if($selectedRole)
-                            <nav wire:key="{{ $selectedRole->id  }}" aria-label="Sidebar">
+                        @if($selectedModel)
+                            <nav wire:key="{{ $selectedModel->id  }}" aria-label="Sidebar">
                                 @foreach($permissionGroups as $name => $permissionGroup)
-                                    <a href="#" wire:key="{{ $name  }}" wire:click="withGroup('{{ $name }}')" class="@if($this->selectedGroup === $name) bg-gray-100 @endif py-4 m-4 text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                                    <a href="#" wire:key="{{ $name  }}" wire:click="forGroup('{{ $name }}')" class="@if($this->selectedGroup === $name) bg-gray-100 @endif py-4 m-4 text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                         <span class="truncate">{{ $name }}</span>
                                     </a>
                                 @endforeach
