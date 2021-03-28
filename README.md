@@ -26,7 +26,7 @@ LLoadout enforce uses some default menus and permissions, these can be created v
 php artisan vendor:publish --tag=LLoadoutEnforce-migrations
 php artisan vendor:publish --tag=LLoadoutEnforce-seeders
 php artisan db:seed --class=EnforceSeeder
-```shell
+```
 
 ### Publish optional assets
 
