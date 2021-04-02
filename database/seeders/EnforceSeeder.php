@@ -26,7 +26,7 @@ class EnforceSeeder extends Seeder
         DB::table('role_has_permissions')->delete();
         DB::table('roles')->delete();
 
-        collect(['superuser', 'admin', 'user'])->each(function ($name) {
+        collect([ 'admin', 'user'])->each(function ($name) {
             DB::table('roles')->insert([
                 'name'       => $name,
                 'guard_name' => 'web'
@@ -134,7 +134,7 @@ class EnforceSeeder extends Seeder
             'guard_name' => 'web'
         ]);
 
-        $developer = Role::create(['name' => 'developer']);
+        $developer = Role::create(['name' => 'superuser']);
 
         $developer->givePermissionTo('menu.user-management');
         $developer->givePermissionTo('menu.user-management.manage-users');
@@ -145,9 +145,12 @@ class EnforceSeeder extends Seeder
         $developer->givePermissionTo('menu.developer-menu.permissions');
         $developer->givePermissionTo('menu.developer-menu.menus');
 
+        $user = User::create(['name' => 'John Doe' , 'email' => 'john@doe.com', 'password' => \Hash::make('password')]);
+
         User::all()->each(function ($user) {
-            $user->assignRole('developer');
+            $user->assignRole('superuser');
         });
+
 
 
     }
