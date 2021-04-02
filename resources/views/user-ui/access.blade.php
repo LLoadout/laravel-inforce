@@ -3,7 +3,7 @@
         <div>
             <nav aria-label="Sidebar">
                 @foreach($permissionGroups as $name => $permissionGroup)
-                    <a href="#" wire:key="{{ $name  }}" wire:click="forGroup('{{ $name }}')" class="@if($this->selectedGroup === $name) bg-gray-100 @endif py-4 m-4 text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                    <a wire:key="{{ $name  }}" wire:click="forGroup('{{ $name }}')" class="@if($this->selectedGroup === $name) bg-gray-100 @endif cursor-pointer py-4 m-4 text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm font-medium rounded-md">
                         <span class="truncate">{{ $name }}</span>
                     </a>
                 @endforeach
