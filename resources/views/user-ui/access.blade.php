@@ -1,4 +1,4 @@
-<div class="container mx-auto">
+<div class="container mx-auto" wire:ignore.self>
     <div class="grid grid-cols-2 rounded-md ">
         <div>
             <nav aria-label="Sidebar">

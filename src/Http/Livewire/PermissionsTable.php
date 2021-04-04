@@ -1,34 +1,40 @@
 <?php
+
 namespace LLoadoutEnforce\Http\Livewire;
 
-
+use App\User;
 use Spatie\Permission\Models\Permission;
-use Mediconesystems\LivewireDatatables\Column;
-use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
+use Illuminate\Database\Eloquent\Builder;
+use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\TableComponent;
+use Rappasoft\LaravelLivewireTables\Traits\HtmlComponents;
 
-class PermissionsTable extends LivewireDatatable
+class PermissionsTable extends TableComponent
 {
+    use HtmlComponents;
 
-    public $exportable = true;
+    public $addRoute          = "permission";
+    public $clearSearchButton = true;
 
-
-    public function builder()
+    public function query(): Builder
     {
         return Permission::query();
     }
 
-
-    public function columns()
+    public function columns(): array
     {
-        return [
-            Column::name('id')
-                ->label('ID')
-                ->searchable()
-                ->linkTo('permission'),
-            Column::name('name')
-                ->label('name')
-                ->searchable()
 
+        return [
+            Column::make('ID', 'id')
+                ->searchable()
+                ->sortable()
+                ->format(function (Permission $model) {
+                    return $this->linkRoute('permission', $model->id, $model->id);
+                }),
+            Column::make('Name', 'name')
+                ->searchable()
+                ->sortable(),
         ];
+
     }
 }

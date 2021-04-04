@@ -2,37 +2,42 @@
 
 namespace LLoadoutEnforce\Http\Livewire;
 
-
-use Mediconesystems\LivewireDatatables\Column;
-use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
+use App\User;
+use Illuminate\Database\Eloquent\Builder;
 use LLoadoutEnforce\Models\Menu;
+use Rappasoft\LaravelLivewireTables\TableComponent;
+use Rappasoft\LaravelLivewireTables\Traits\HtmlComponents;
+use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class MenusTable extends LivewireDatatable
+class MenusTable extends TableComponent
 {
+    use HtmlComponents;
 
-    public $exportable = true;
+    public $addRoute          = "menu";
+    public $clearSearchButton = true;
 
-
-    public function builder()
+    public function query(): Builder
     {
         return Menu::query();
     }
 
-
-    public function columns()
+    public function columns(): array
     {
-        return [
-            Column::name('id')
-                ->label('ID')
-                ->searchable()
-                ->linkTo('menu'),
-            Column::name('name')
-                ->label('name')
-                ->searchable(),
-            Column::name('route')
-                ->label('route')
-                ->searchable()
 
+        return [
+            Column::make('ID', 'id')
+                ->searchable()
+                ->sortable()
+                ->format(function (Menu $model) {
+                    return $this->linkRoute('menu', $model->id, $model->id);
+                }),
+            Column::make('Name', 'name')
+                ->searchable()
+                ->sortable(),
+            Column::make('Route', 'route')
+                ->searchable()
+                ->sortable(),
         ];
+
     }
 }

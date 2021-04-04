@@ -2,51 +2,42 @@
 
 namespace LLoadoutEnforce\Http\Livewire;
 
-
 use App\Models\User;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Mediconesystems\LivewireDatatables\Column;
-use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
+use Illuminate\Database\Eloquent\Builder;
+use Rappasoft\LaravelLivewireTables\TableComponent;
+use Rappasoft\LaravelLivewireTables\Traits\HtmlComponents;
+use Rappasoft\LaravelLivewireTables\Views\Column;
+use Spatie\Permission\Models\Role;
 
-class UsersTable extends LivewireDatatable
+class UsersTable extends TableComponent
 {
+    use HtmlComponents;
 
-    public $exportable = true;
+    public $addRoute          = "users.edit";
+    public $clearSearchButton = true;
 
-
-    public function builder()
+    public function query(): Builder
     {
         return User::query();
     }
 
-    public function roles(): BelongsToMany
+    public function columns(): array
     {
-        return $this->morphToMany(
-            config('permission.models.role'),
-            'model',
-            config('permission.table_names.model_has_roles'),
-            config('permission.column_names.model_morph_key'),
-            'role_id'
-        );
-    }
 
-
-    public function columns()
-    {
         return [
-            Column::name('id')
-                ->label('ID')
+            Column::make('ID', 'id')
                 ->searchable()
-                ->linkTo('user/detail'),
-            Column::name('name')
-                ->label('name')
-                ->searchable(),
-            Column::name('email')
-                ->label('email')
-                ->searchable(),
-//            Column::name('roles.name')
-//                ->label('role')
-
+                ->sortable()
+                ->format(function (User $model) {
+                    return $this->linkRoute('users.edit', $model->id, $model->id);
+                }),
+            Column::make('Name', 'name')
+                ->searchable()
+                ->sortable(),
+            Column::make('Email', 'email')
+                ->searchable()
+                ->sortable(),
         ];
+
     }
 }

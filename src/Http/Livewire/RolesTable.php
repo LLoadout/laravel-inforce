@@ -1,34 +1,40 @@
 <?php
+
 namespace LLoadoutEnforce\Http\Livewire;
 
-
+use App\User;
+use Illuminate\Database\Eloquent\Builder;
+use Rappasoft\LaravelLivewireTables\TableComponent;
+use Rappasoft\LaravelLivewireTables\Traits\HtmlComponents;
+use Rappasoft\LaravelLivewireTables\Views\Column;
 use Spatie\Permission\Models\Role;
-use Mediconesystems\LivewireDatatables\Column;
-use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
-class RolesTable extends LivewireDatatable
+class RolesTable extends TableComponent
 {
+    use HtmlComponents;
 
-    public $exportable = true;
+    public $addRoute          = "role.edit";
+    public $clearSearchButton = true;
 
-
-    public function builder()
+    public function query(): Builder
     {
         return Role::query();
     }
 
-
-    public function columns()
+    public function columns(): array
     {
-        return [
-            Column::name('id')
-                ->label('ID')
-                ->searchable()
-                ->linkTo('role'),
-            Column::name('name')
-                ->label('name')
-                ->searchable()
 
+        return [
+            Column::make('ID', 'id')
+                ->searchable()
+                ->sortable()
+                ->format(function (Role $model) {
+                    return $this->linkRoute('role.edit', $model->id, $model->id);
+                }),
+            Column::make('Name', 'name')
+                ->searchable()
+                ->sortable(),
         ];
+
     }
 }
