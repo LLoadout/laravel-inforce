@@ -1,7 +1,7 @@
 ![Downloads](https://img.shields.io/packagist/dt/lloadout/enforce.svg?style=flat-square)
 
 <p align="center">
-    <img src="https://github.com/LLoadout/assets/blob/master/LLoadout.png" width="500" title="LLoadout logo">
+    <img src="https://github.com/LLoadout/assets/blob/master/LLoadout_enforce.png" width="500" title="LLoadout logo">
 </p>
 
 # LLoadout
