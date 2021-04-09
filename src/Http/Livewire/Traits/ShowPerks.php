@@ -1,6 +1,6 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire\Traits;
+namespace LLoadoutInforce\Http\Livewire\Traits;
 
 trait ShowPerks
 {

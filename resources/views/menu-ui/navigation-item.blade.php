@@ -20,7 +20,7 @@
                     </span>
                     </button>
                     <ul class="bg-white border rounded-sm absolute top-0 right-0 transition duration-150 ease-in-out origin-top-left min-w-32">
-                        @include('LLoadoutEnforce-views::menu-ui.navigation-item', array('menu' => $__menu))
+                        @include('LLoadoutInforce-views::menu-ui.navigation-item', array('menu' => $__menu))
                     </ul>
                 </li>
             @else

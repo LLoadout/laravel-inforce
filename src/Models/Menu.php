@@ -1,6 +1,6 @@
 <?php
 
-namespace LLoadoutEnforce\Models;
+namespace LLoadoutInforce\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

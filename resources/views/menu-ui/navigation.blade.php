@@ -26,7 +26,7 @@
                              x-transition:leave-end="transform opacity-0 scale-95"
                              style="display: none;"
                              @click="open = false">
-                        @include("LLoadoutEnforce-views::menu-ui.navigation-item", ['menu' => $menu])
+                        @include("LLoadoutInforce-views::menu-ui.navigation-item", ['menu' => $menu])
                         </div>
                     @endif
                 </div>

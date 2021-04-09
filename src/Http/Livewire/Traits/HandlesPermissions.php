@@ -1,9 +1,9 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire\Traits;
+namespace LLoadoutInforce\Http\Livewire\Traits;
 
 use App\Models\User;
-use LLoadoutEnforce\Services\Grouper;
+use LLoadoutInforce\Services\Grouper;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 

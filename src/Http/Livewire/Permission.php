@@ -1,6 +1,6 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire;
+namespace LLoadoutInforce\Http\Livewire;
 
 
 use Livewire\Component;
@@ -24,7 +24,7 @@ class Permission extends Component
 
     public function render()
     {
-        return view('LLoadoutEnforce-views::permission-ui.permission');
+        return view('LLoadoutInforce-views::permission-ui.permission');
     }
 
     public function delete()

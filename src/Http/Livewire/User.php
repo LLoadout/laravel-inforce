@@ -1,11 +1,11 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire;
+namespace LLoadoutInforce\Http\Livewire;
 
 use Hash;
 use Livewire\Component;
-use LLoadoutEnforce\Http\Livewire\Traits\HandlesPermissions;
-use LLoadoutEnforce\Http\Livewire\Traits\ShowPerks;
+use LLoadoutInforce\Http\Livewire\Traits\HandlesPermissions;
+use LLoadoutInforce\Http\Livewire\Traits\ShowPerks;
 use Spatie\Permission\Models\Role;
 
 class User extends Component
@@ -35,7 +35,7 @@ class User extends Component
     public function render()
     {
         $roles = Role::all();
-        return view('LLoadoutEnforce-views::user-ui.user', compact('roles'));
+        return view('LLoadoutInforce-views::user-ui.user', compact('roles'));
     }
 
     public function delete()

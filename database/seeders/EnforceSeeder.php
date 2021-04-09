@@ -5,12 +5,12 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use LLoadoutEnforce\Models\Menu;
+use LLoadoutInforce\Models\Menu;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 
-class EnforceSeeder extends Seeder
+class InforceSeeder extends Seeder
 {
     /**
      * Run the database seeds.

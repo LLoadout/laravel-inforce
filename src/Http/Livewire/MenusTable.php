@@ -1,10 +1,10 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire;
+namespace LLoadoutInforce\Http\Livewire;
 
 use App\User;
 use Illuminate\Database\Eloquent\Builder;
-use LLoadoutEnforce\Models\Menu;
+use LLoadoutInforce\Models\Menu;
 use Rappasoft\LaravelLivewireTables\TableComponent;
 use Rappasoft\LaravelLivewireTables\Traits\HtmlComponents;
 use Rappasoft\LaravelLivewireTables\Views\Column;

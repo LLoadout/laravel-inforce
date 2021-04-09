@@ -18,7 +18,7 @@
                         <span class="ml-2">{{ __('Select all') }}</span>
                     </label>
                 @endif
-                @include('LLoadoutEnforce-views::access-ui.permission')
+                @include('LLoadoutInforce-views::access-ui.permission')
             @endif
         </div>
     </div>

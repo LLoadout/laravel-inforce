@@ -1,6 +1,6 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire;
+namespace LLoadoutInforce\Http\Livewire;
 
 use App\User;
 use Spatie\Permission\Models\Permission;

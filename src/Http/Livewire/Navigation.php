@@ -1,9 +1,9 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire;
+namespace LLoadoutInforce\Http\Livewire;
 
 use Livewire\Component;
-use LLoadoutEnforce\Http\Livewire\Traits\ShowPerks;
+use LLoadoutInforce\Http\Livewire\Traits\ShowPerks;
 
 class Navigation extends Component
 {
@@ -15,12 +15,12 @@ class Navigation extends Component
     public function render()
     {
         $menus = $this->getMenus();
-        return view('LLoadoutEnforce-views::menu-ui.navigation', compact('menus'));
+        return view('LLoadoutInforce-views::menu-ui.navigation', compact('menus'));
     }
 
     private function getMenus()
     {
-        return \LLoadoutEnforce\Models\Menu::whereNull('parent_id')->with('menu')->orderBy('sort_order')->get()->toBase();
+        return \LLoadoutInforce\Models\Menu::whereNull('parent_id')->with('menu')->orderBy('sort_order')->get()->toBase();
     }
 
 }

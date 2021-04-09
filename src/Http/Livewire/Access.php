@@ -1,11 +1,11 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire;
+namespace LLoadoutInforce\Http\Livewire;
 
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
-use LLoadoutEnforce\Http\Livewire\Traits\HandlesPermissions;
-use LLoadoutEnforce\Http\Livewire\Traits\ShowPerks;
+use LLoadoutInforce\Http\Livewire\Traits\HandlesPermissions;
+use LLoadoutInforce\Http\Livewire\Traits\ShowPerks;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -17,6 +17,6 @@ class Access extends Component
     public function render(): View
     {
         $roles = Role::all();
-        return view('LLoadoutEnforce-views::access-ui.access', compact('roles'));
+        return view('LLoadoutInforce-views::access-ui.access', compact('roles'));
     }
 }

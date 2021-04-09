@@ -1,5 +1,5 @@
 {
-    "name": "lloadout/enforce",
+    "name": "lloadout/inforce",
     "description": "A toolset to kickstart your application on top of Laravel Livewire, Laravel Jetstream and Spatie Permissions.",
     "type": "library",
     "license": "MIT",
@@ -19,15 +19,15 @@
     },
     "autoload": {
         "psr-4": {
-            "LLoadoutEnforce\\": "src",
-            "LLoadoutEnforce\\tests\\": "tests",
-            "LLoadoutEnforce\\Database\\Seeds\\": "database/seeds/"
+            "LLoadoutInforce\\": "src",
+            "LLoadoutInforce\\tests\\": "tests",
+            "LLoadoutInforce\\Database\\Seeds\\": "database/seeds/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "LLoadoutEnforce\\LLoadoutEnforceServiceProvider"
+                "LLoadoutInforce\\LLoadoutInforceServiceProvider"
             ]
         }
     },

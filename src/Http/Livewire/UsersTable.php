@@ -1,6 +1,6 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire;
+namespace LLoadoutInforce\Http\Livewire;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;

@@ -1,15 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use LLoadoutEnforce\Http\Livewire\Access;
-use LLoadoutEnforce\Http\Livewire\Menu;
-use LLoadoutEnforce\Http\Livewire\Menus;
-use LLoadoutEnforce\Http\Livewire\Permission;
-use LLoadoutEnforce\Http\Livewire\Permissions;
-use LLoadoutEnforce\Http\Livewire\Role;
-use LLoadoutEnforce\Http\Livewire\Roles;
-use LLoadoutEnforce\Http\Livewire\User;
-use LLoadoutEnforce\Http\Livewire\Users;
+use LLoadoutInforce\Http\Livewire\Access;
+use LLoadoutInforce\Http\Livewire\Menu;
+use LLoadoutInforce\Http\Livewire\Menus;
+use LLoadoutInforce\Http\Livewire\Permission;
+use LLoadoutInforce\Http\Livewire\Permissions;
+use LLoadoutInforce\Http\Livewire\Role;
+use LLoadoutInforce\Http\Livewire\Roles;
+use LLoadoutInforce\Http\Livewire\User;
+use LLoadoutInforce\Http\Livewire\Users;
 
 Route::middleware(['web', 'auth'])->group(function () {
 

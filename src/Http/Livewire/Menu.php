@@ -1,6 +1,6 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire;
+namespace LLoadoutInforce\Http\Livewire;
 
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
@@ -23,10 +23,10 @@ class Menu extends Component
         ];
     }
 
-    public function mount(\LLoadoutEnforce\Models\Menu $menu)
+    public function mount(\LLoadoutInforce\Models\Menu $menu)
     {
         $this->menu    = $menu;
-        $parents       = \LLoadoutEnforce\Models\Menu::with('parent')->get()->map(function ($menu) {
+        $parents       = \LLoadoutInforce\Models\Menu::with('parent')->get()->map(function ($menu) {
             $prefixInfo = $menu->prefixInfo;
             $order      = (!($menu->parent) ? $menu->sort_order * 100 : ($prefixInfo['root']->sort_order * 100) + $prefixInfo['count']);
             return [
@@ -40,9 +40,9 @@ class Menu extends Component
 
     public function render()
     {
-        $menus   = \LLoadoutEnforce\Models\Menu::with('menu.menu.menu')->orderBy('sort_order')->get();
+        $menus   = \LLoadoutInforce\Models\Menu::with('menu.menu.menu')->orderBy('sort_order')->get();
         $parents = $this->parents;
-        return view('LLoadoutEnforce-views::menu-ui.menu', compact('menus', 'parents'));
+        return view('LLoadoutInforce-views::menu-ui.menu', compact('menus', 'parents'));
     }
 
     public function delete()

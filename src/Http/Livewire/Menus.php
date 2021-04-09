@@ -1,6 +1,6 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire;
+namespace LLoadoutInforce\Http\Livewire;
 
 use Livewire\Component;
 
@@ -9,7 +9,7 @@ class Menus extends Component
 
     public function render()
     {
-        return view('LLoadoutEnforce-views::menu-ui.menus');
+        return view('LLoadoutInforce-views::menu-ui.menus');
     }
 
 }

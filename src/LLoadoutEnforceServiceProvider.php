@@ -1,21 +1,21 @@
-<?php namespace LLoadoutEnforce;
+<?php namespace LLoadoutInforce;
 
 use App\Http\Livewire\Roles;
 use Livewire\Livewire;
-use LLoadoutEnforce\Http\Livewire\Access;
-use LLoadoutEnforce\Http\Livewire\Menu;
-use LLoadoutEnforce\Http\Livewire\MenusTable;
-use LLoadoutEnforce\Http\Livewire\Navigation;
-use LLoadoutEnforce\Http\Livewire\Permission;
-use LLoadoutEnforce\Http\Livewire\PermissionsTable;
-use LLoadoutEnforce\Http\Livewire\Role;
-use LLoadoutEnforce\Http\Livewire\RolesTable;
-use LLoadoutEnforce\Http\Livewire\User;
-use LLoadoutEnforce\Http\Livewire\UsersTable;
+use LLoadoutInforce\Http\Livewire\Access;
+use LLoadoutInforce\Http\Livewire\Menu;
+use LLoadoutInforce\Http\Livewire\MenusTable;
+use LLoadoutInforce\Http\Livewire\Navigation;
+use LLoadoutInforce\Http\Livewire\Permission;
+use LLoadoutInforce\Http\Livewire\PermissionsTable;
+use LLoadoutInforce\Http\Livewire\Role;
+use LLoadoutInforce\Http\Livewire\RolesTable;
+use LLoadoutInforce\Http\Livewire\User;
+use LLoadoutInforce\Http\Livewire\UsersTable;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class LLoadoutEnforceServiceProvider extends PackageServiceProvider
+class LLoadoutInforceServiceProvider extends PackageServiceProvider
 {
 
     public function configurePackage(Package $package): void
@@ -26,7 +26,7 @@ class LLoadoutEnforceServiceProvider extends PackageServiceProvider
 
     private function loadAssets()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'LLoadoutEnforce-views');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'LLoadoutInforce-views');
         $this->loadLivewireComponents();
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         return $this;
@@ -37,15 +37,15 @@ class LLoadoutEnforceServiceProvider extends PackageServiceProvider
 
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/loadout'),
-        ], 'LLoadoutEnforce-views');
+        ], 'LLoadoutInforce-views');
 
         $this->publishes([
             __DIR__ . '/../database/seeders' => base_path('database/seeders'),
-        ], 'LLoadoutEnforce-seeders');
+        ], 'LLoadoutInforce-seeders');
 
         $this->publishes([
-            __DIR__.'/../database/migrations/create_enforce_tables.php.stub' => base_path('database/migrations/'. date('Y_m_d_His').'_create_enforce_tables.php'),
-        ], 'LLoadoutEnforce-migrations');
+            __DIR__.'/../database/migrations/create_inforce_tables.php.stub' => base_path('database/migrations/'. date('Y_m_d_His').'_create_inforce_tables.php'),
+        ], 'LLoadoutInforce-migrations');
 
         return $this;
     }

@@ -1,9 +1,9 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire;
+namespace LLoadoutInforce\Http\Livewire;
 
 use Livewire\Component;
-use LLoadoutEnforce\Http\Livewire\Traits\HandlesPermissions;
+use LLoadoutInforce\Http\Livewire\Traits\HandlesPermissions;
 
 class Role extends Component
 {
@@ -26,7 +26,7 @@ class Role extends Component
 
     public function render()
     {
-        return view('LLoadoutEnforce-views::user-ui.role');
+        return view('LLoadoutInforce-views::user-ui.role');
     }
 
     public function delete()

@@ -1,6 +1,6 @@
 <?php
 
-namespace LLoadoutEnforce\Http\Livewire;
+namespace LLoadoutInforce\Http\Livewire;
 
 
 use Livewire\Component;
@@ -11,7 +11,7 @@ class Users extends Component
 
     public function render()
     {
-        return view('LLoadoutEnforce-views::user-ui.users');
+        return view('LLoadoutInforce-views::user-ui.users');
     }
 
 

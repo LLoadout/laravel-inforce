@@ -39,7 +39,7 @@
                                 </label>
                             @endif
 
-                            @include('LLoadoutEnforce-views::access-ui.permission')
+                            @include('LLoadoutInforce-views::access-ui.permission')
 
                         @endif
                     </div>

@@ -1,5 +1,5 @@
 <?php
-namespace LLoadoutEnforce\Services;
+namespace LLoadoutInforce\Services;
 
 class Grouper
 {
