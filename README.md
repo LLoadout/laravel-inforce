@@ -1,26 +1,26 @@
-![Downloads](https://img.shields.io/packagist/dt/lloadout/enforce.svg?style=flat-square)
+![Downloads](https://img.shields.io/packagist/dt/lloadout/inforce.svg?style=flat-square)
 
 <p align="center">
-    <img src="https://github.com/LLoadout/assets/blob/master/LLoadout_enforce.png" width="500" title="LLoadout logo">
+    <img src="https://github.com/LLoadout/assets/blob/master/LLoadout_inforce.png" width="500" title="LLoadout logo">
 </p>
 
 # LLoadout
 
 LLoadout is your loadout for Laravel.  It helps you with tips , code examples and packages to make you a better Laravel developer.
 
-# LLoadout Enforce
+# LLoadout nforce
 
-With LLoadout Enforce you will kickstart your Laravel development when using Laravel Jetstream and Spatie permissions.
+With LLoadout Inforce you will kickstart your Laravel development when using Laravel Jetstream and Spatie permissions.
 
 ## Users, roles and permissions
 
-LLoadout Enforce will add a ui for managing users, roles, permission and menus.  It will also provide you with
+LLoadout inforce will add a ui for managing users, roles, permission and menus.  It will also provide you with
 an ui to link users to roles and assign permissions to roles.
 
 ## Installation
 
 ```shell
-composer require lloadout/enforce
+composer require lloadout/inforce
 ```
 
 If you are starting from a new installation and need to install Laravel Jetstream or Spatie Permissions , you need to do the additional steps 
@@ -28,13 +28,13 @@ documented at the end of this documentation.
 
 ### Assets 
 
-LLoadout enforce uses some default menus and permissions, these can be created via the provided migrations and seeder.
+LLoadout inforce uses some default menus and permissions, these can be created via the provided migrations and seeder.
 
 ```shell
-php artisan vendor:publish --tag=LLoadoutEnforce-migrations
-php artisan vendor:publish --tag=LLoadoutEnforce-seeders
+php artisan vendor:publish --tag=LLoadoutInforce-migrations
+php artisan vendor:publish --tag=LLoadoutInforce-seeders
 php artisan migrate
-php artisan db:seed --class=EnforceSeeder
+php artisan db:seed --class=InforceSeeder
 ```
 
 You also have to publish the datatables components configuration to set the theme to tailwind
@@ -48,12 +48,12 @@ Change the `theme` config setting to `tailwind` in the published file.
 ### Publish optional assets
 
 ```shell
-php artisan vendor:publish --tag=LLoadoutEnforce-views
+php artisan vendor:publish --tag=LLoadoutInforce-views
 ```
 
 ## Logging in 
 
-LLoadout enforce will default create a user with username of `john@doe.com` and the password `password`
+LLoadout inforce will default create a user with username of `john@doe.com` and the password `password`
 
 ## Navigation
 
