@@ -116,14 +116,6 @@ php artisan migrate
 php artisan db:seed --class=InforceSeeder
 ```
 
-You also have to publish the datatables components configuration to set the theme to tailwind
-
-```shell
-php artisan vendor:publish --provider="Rappasoft\LaravelLivewireTables\LaravelLivewireTablesServiceProvider" --tag=config
-```
-Change the `theme` config setting to `tailwind` in the published file.
-
-
 ### Publish optional assets
 
 ```shell
