@@ -9,16 +9,9 @@
             "email": "dieter@deltasolutions.be"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/LLoadout/laravel-livewire-tables"
-        }
-    ],
     "require": {
         "php": "^7.4|^8.0",
         "livewire/livewire": "^2.0",
-        "rappasoft/laravel-livewire-tables": "dev-tailwind",
         "spatie/laravel-package-tools": "^1.1",
         "spatie/laravel-permission": "^4.0",
         "laravel/jetstream": "^2.2"

@@ -8,7 +8,7 @@
 
 LLoadout is your loadout for Laravel.  It helps you with tips , code examples and packages to make you a better Laravel developer.
 
-# LLoadout nforce
+# LLoadout inforce
 
 With LLoadout Inforce you will kickstart your Laravel development when using Laravel Jetstream and Spatie permissions.
 
@@ -23,7 +23,7 @@ an ui to link users to roles and assign permissions to roles.
 composer require lloadout/inforce
 ```
 
-If you are starting from a new installation and need to install Laravel Jetstream or Spatie Permissions , you need to do the additional steps 
+If you are starting from a new installation and need to install Laravel Jetstream, Spatie Permissions or Laravel Livewire datatables , you need to do the additional steps 
 documented at the end of this documentation.
 
 ### Assets 
@@ -101,3 +101,32 @@ use HasRoles;
     // ...
 }
 ```
+
+## Installing Laravel Livewire datatables
+
+because the datatables don't include a tailwind ui i've created a fork.  The fork is in pull request but while it's still open you have to include my 
+version as a root dependencie in your project.
+
+add this to your composer.json 
+
+```shell
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/LLoadout/laravel-livewire-tables"
+        }
+    ],
+```
+
+add this in your required packages 
+
+```shell
+"rappasoft/laravel-livewire-tables": "dev-tailwind as 0.3.3"
+```
+
+publish the config file 
+```shell
+php artisan vendor:publish --provider="Rappasoft\LaravelLivewireTables\LaravelLivewireTablesServiceProvider" --tag=config
+```
+
+then change "theme" to "tailwind" in /config/laravel-livewire-tables.php
