@@ -9,6 +9,12 @@
             "email": "dieter@deltasolutions.be"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/LLoadout/laravel-livewire-tables"
+        }
+    ],
     "require": {
         "php": "^7.4|^8.0",
         "livewire/livewire": "^2.0",
@@ -17,12 +23,6 @@
         "spatie/laravel-permission": "^4.0",
         "laravel/jetstream": "^2.2"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/LLoadout/laravel-livewire-tables.git"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "LLoadoutInforce\\": "src",
