@@ -63,8 +63,8 @@ use HasRoles;
 
 ## Installing Laravel Livewire datatables
 
-because the datatables don't include a tailwind ui i've created a fork.  The fork is in pull request but while it's still open you have to include my
-version as a root dependencie in your project.
+Inforce uses datatables for its overviews.  Because the datatables i use don't include a tailwind ui i've created a fork.  The fork is in pull request but while it's still open you have to include my
+version as a root dependencie in your project.  In future versions this installation step will be obsolete.
 
 add this to your composer.json
 
