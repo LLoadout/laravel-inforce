@@ -19,6 +19,79 @@ an ui to link users to roles and assign permissions to roles.
 
 ## Installation
 
+
+## Installing Laravel Jetstream ( if you didn't already install it )
+
+```php 
+composer require laravel/jetstream
+
+php artisan jetstream:install livewire
+```
+
+After this you have to install and build the assets
+
+```shell
+npm install
+npm run dev
+```
+
+## Installing Laravel Permissions ( if you didn't already install it )
+
+if you hadn't already installed Laravel Permissions , install it first
+
+```shell
+ composer require spatie/laravel-permission
+```
+After the installation you should first publish the config file and migrations.
+
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+
+
+First, add the Spatie\Permission\Traits\HasRoles trait to your User model(s):
+
+```php
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
+
+class User extends Authenticatable
+{
+use HasRoles;
+
+    // ...
+}
+```
+
+## Installing Laravel Livewire datatables
+
+because the datatables don't include a tailwind ui i've created a fork.  The fork is in pull request but while it's still open you have to include my
+version as a root dependencie in your project.
+
+add this to your composer.json
+
+```shell
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/LLoadout/laravel-livewire-tables"
+        }
+    ],
+```
+
+add this in your required packages
+
+```shell
+"rappasoft/laravel-livewire-tables": "dev-tailwind as 0.3.3"
+```
+
+publish the config file
+```shell
+php artisan vendor:publish --provider="Rappasoft\LaravelLivewireTables\LaravelLivewireTablesServiceProvider" --tag=config
+```
+
+then change "theme" to "tailwind" in /config/laravel-livewire-tables.php
+
+## Installation of LLoadout inforce 
+
 ```shell
 composer require lloadout/inforce
 ```
@@ -64,69 +137,3 @@ Therefore you have to add this tag after the dashboard navigation div in navigat
 ## Logging in
 
 LLoadout inforce will default create a user with username of `john@doe.com` and the password `password`
-
-
-## Installing Laravel Jetstream ( if you didn't already install it )
-
-```php 
-composer require laravel/jetstream
-
-php artisan jetstream:install livewire
-```
-
-After this you have to install and build the assets
-
-```shell
-npm install
-npm run dev
-```
-
-## Installing Laravel Permissions ( if you didn't already install it )
-
-if you hadn't already installed Laravel Permissions then you should first publish the config file and migrations.
-
-php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
-
-
-First, add the Spatie\Permission\Traits\HasRoles trait to your User model(s):
-
-```php
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Spatie\Permission\Traits\HasRoles;
-
-class User extends Authenticatable
-{
-use HasRoles;
-
-    // ...
-}
-```
-
-## Installing Laravel Livewire datatables
-
-because the datatables don't include a tailwind ui i've created a fork.  The fork is in pull request but while it's still open you have to include my 
-version as a root dependencie in your project.
-
-add this to your composer.json 
-
-```shell
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/LLoadout/laravel-livewire-tables"
-        }
-    ],
-```
-
-add this in your required packages 
-
-```shell
-"rappasoft/laravel-livewire-tables": "dev-tailwind as 0.3.3"
-```
-
-publish the config file 
-```shell
-php artisan vendor:publish --provider="Rappasoft\LaravelLivewireTables\LaravelLivewireTablesServiceProvider" --tag=config
-```
-
-then change "theme" to "tailwind" in /config/laravel-livewire-tables.php
