@@ -83,6 +83,12 @@ add this in your required packages
 "rappasoft/laravel-livewire-tables": "dev-tailwind as 0.3.3"
 ```
 
+now you can execute an update 
+
+```shell
+composer update
+```
+
 publish the config file
 ```shell
 php artisan vendor:publish --provider="Rappasoft\LaravelLivewireTables\LaravelLivewireTablesServiceProvider" --tag=config
