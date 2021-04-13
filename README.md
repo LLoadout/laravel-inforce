@@ -51,19 +51,19 @@ Change the `theme` config setting to `tailwind` in the published file.
 php artisan vendor:publish --tag=LLoadoutInforce-views
 ```
 
-## Logging in 
-
-LLoadout inforce will default create a user with username of `john@doe.com` and the password `password`
-
 ## Navigation
 
 It provides a ui for navigation management and navigation permissions.
 
-Therefore you have to add this tag after the dashboard navigation div in navigation.blad.php
+Therefore you have to add this tag after the dashboard navigation div in navigation-menu.blade.php
 
 ```php 
  <livewire:navigation/>
 ```
+
+## Logging in
+
+LLoadout inforce will default create a user with username of `john@doe.com` and the password `password`
 
 
 ## Installing Laravel Jetstream ( if you didn't already install it )
