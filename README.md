@@ -12,6 +12,10 @@ LLoadout is your loadout for Laravel.  It helps you with tips , code examples an
 
 With LLoadout Inforce you will kickstart your Laravel development when using Laravel Jetstream and Spatie permissions.
 
+<p align="center">
+    <img src="https://github.com/LLoadout/assets/blob/master/inforce/teaser.png"  title="LLoadout inforce">
+</p>
+
 ## Users, roles and permissions
 
 LLoadout inforce will add a ui for managing users, roles, permission and menus.  It will also provide you with
