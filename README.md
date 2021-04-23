@@ -43,9 +43,6 @@ https://spatie.be/docs/laravel-permission/v4/installation-laravel
 composer require lloadout/inforce
 ```
 
-If you are starting from a new installation and need to install Laravel Jetstream, Spatie Permissions or Laravel Livewire datatables , you need to do the additional steps 
-documented at the end of this documentation.
-
 ### Assets 
 
 LLoadout inforce uses some default menus and permissions, these can be created via the provided migrations and seeder.
