@@ -4,21 +4,20 @@ namespace LLoadoutInforce\Http\Livewire;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
-use Rappasoft\LaravelLivewireTables\TableComponent;
-use Rappasoft\LaravelLivewireTables\Traits\HtmlComponents;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Spatie\Permission\Models\Role;
 
-class UsersTable extends TableComponent
+class UsersTable extends DataTableComponent
 {
-    use HtmlComponents;
 
     public $addRoute          = "users.edit";
-    public $clearSearchButton = true;
+
 
     public function query(): Builder
     {
-        return User::query();
+        return User::query()
+            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%')->orWhere('email', 'like', '%'.$term.'%'));
     }
 
     public function columns(): array
@@ -26,18 +25,18 @@ class UsersTable extends TableComponent
 
         return [
             Column::make('ID', 'id')
-                ->searchable()
-                ->sortable()
-                ->format(function (User $model) {
-                    return $this->linkRoute('users.edit', $model->id, $model->id);
-                }),
+                ->sortable(),
             Column::make('Name', 'name')
-                ->searchable()
                 ->sortable(),
             Column::make('Email', 'email')
-                ->searchable()
                 ->sortable(),
         ];
 
     }
+
+    public function getTableRowUrl($row): string
+    {
+        return route('users.edit', $row);
+    }
+
 }

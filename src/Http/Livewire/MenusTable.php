@@ -5,20 +5,17 @@ namespace LLoadoutInforce\Http\Livewire;
 use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use LLoadoutInforce\Models\Menu;
-use Rappasoft\LaravelLivewireTables\TableComponent;
-use Rappasoft\LaravelLivewireTables\Traits\HtmlComponents;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class MenusTable extends TableComponent
+class MenusTable extends DataTableComponent
 {
-    use HtmlComponents;
-
-    public $addRoute          = "menu";
-    public $clearSearchButton = true;
 
     public function query(): Builder
     {
-        return Menu::query();
+        return Menu::query()
+            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%')->orWhere('route', 'like', '%'.$term.'%'));
+
     }
 
     public function columns(): array
@@ -26,18 +23,19 @@ class MenusTable extends TableComponent
 
         return [
             Column::make('ID', 'id')
-                ->searchable()
-                ->sortable()
-                ->format(function (Menu $model) {
-                    return $this->linkRoute('menu', $model->id, $model->id);
-                }),
+                ->sortable(),
             Column::make('Name', 'name')
-                ->searchable()
                 ->sortable(),
             Column::make('Route', 'route')
-                ->searchable()
                 ->sortable(),
         ];
 
     }
+
+    public function getTableRowUrl($row): string
+    {
+        return route('menu', $row);
+    }
+
+
 }

@@ -6,19 +6,18 @@ use App\User;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\TableComponent;
-use Rappasoft\LaravelLivewireTables\Traits\HtmlComponents;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
 
-class PermissionsTable extends TableComponent
+class PermissionsTable extends DataTableComponent
 {
-    use HtmlComponents;
 
     public $addRoute          = "permission";
-    public $clearSearchButton = true;
+
 
     public function query(): Builder
     {
-        return Permission::query();
+        return Permission::query()
+            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%'));
     }
 
     public function columns(): array
@@ -26,15 +25,16 @@ class PermissionsTable extends TableComponent
 
         return [
             Column::make('ID', 'id')
-                ->searchable()
-                ->sortable()
-                ->format(function (Permission $model) {
-                    return $this->linkRoute('permission', $model->id, $model->id);
-                }),
+                ->sortable(),
             Column::make('Name', 'name')
-                ->searchable()
                 ->sortable(),
         ];
 
     }
+
+    public function getTableRowUrl($row): string
+    {
+        return route('permission', $row);
+    }
+
 }

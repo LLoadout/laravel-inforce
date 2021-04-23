@@ -24,81 +24,18 @@ an ui to link users to roles and assign permissions to roles.
 ## Installation
 
 
-## Installing Laravel Jetstream ( if you didn't already install it )
+## Installing Laravel Jetstream, the Livewire version 
 
-```php 
-composer require laravel/jetstream
+Laravel Jetstream is a requirement for this package, if you haven't allready install it i refer
+to the docs of Jetstream to install it.
 
-php artisan jetstream:install livewire
-```
+https://jetstream.laravel.com/2.x/installation.html#livewire
 
-After this you have to install and build the assets
+## Installing Laravel Permissions
 
-```shell
-npm install
-npm run dev
-```
+If you hadn't already installed Laravel Permissions , install it first, therefor I refer to the docs of Spatie
 
-## Installing Laravel Permissions ( if you didn't already install it )
-
-if you hadn't already installed Laravel Permissions , install it first
-
-```shell
- composer require spatie/laravel-permission
-```
-After the installation you should first publish the config file and migrations.
-
-php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
-
-
-First, add the Spatie\Permission\Traits\HasRoles trait to your User model(s):
-
-```php
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Spatie\Permission\Traits\HasRoles;
-
-class User extends Authenticatable
-{
-use HasRoles;
-
-    // ...
-}
-```
-
-## Installing Laravel Livewire datatables
-
-Inforce uses datatables for its overviews.  Because the datatables i use don't include a tailwind ui i've created a fork.  The fork is in pull request but while it's still open you have to include my
-version as a root dependencie in your project.  In future versions this installation step will be obsolete.
-
-add this to your composer.json
-
-```shell
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/LLoadout/laravel-livewire-tables"
-        }
-    ],
-```
-
-add this in your required packages
-
-```shell
-"rappasoft/laravel-livewire-tables": "dev-tailwind as 0.3.3"
-```
-
-now you can execute an update 
-
-```shell
-composer update
-```
-
-publish the config file
-```shell
-php artisan vendor:publish --provider="Rappasoft\LaravelLivewireTables\LaravelLivewireTablesServiceProvider" --tag=config
-```
-
-then change "theme" to "tailwind" in /config/laravel-livewire-tables.php
+https://spatie.be/docs/laravel-permission/v4/installation-laravel
 
 ## Installation of LLoadout inforce 
 
