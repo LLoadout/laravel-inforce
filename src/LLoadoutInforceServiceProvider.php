@@ -36,7 +36,7 @@ class LLoadoutInforceServiceProvider extends PackageServiceProvider
     {
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/loadout'),
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/LLoadoutInforce-views'),
         ], 'LLoadoutInforce-views');
 
         $this->publishes([
