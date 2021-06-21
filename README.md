@@ -110,17 +110,6 @@ class MyUser extends \LLoadoutInforce\Http\Livewire\User
         ];
     }
 
-    public function saveUser()
-    {
-        $this->validate();
-
-        $this->handlePassword();
-        $this->user->save();
-        $this->user->syncRoles([$this->userRoles]);
-
-    }
-
-
 }
 
 ```

@@ -60,7 +60,7 @@
     </x-jet-form-section>
     <x-jet-section-border/>
 
-    <x-jet-form-section submit="updateUser">
+    <x-jet-form-section submit="updatePassword">
         <x-slot name="title">
             {{ __('Password') }}
         </x-slot>
@@ -72,13 +72,13 @@
         <x-slot name="form">
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="password" value="{{ __('Password') }}"/>
-                <x-jet-input id="password" type="password" class="mt-1 block w-full" wire:model.defer="user.password" autocomplete="name"/>
-                <x-jet-input-error for="user.password" class="mt-2"/>
+                <x-jet-input id="password" type="password" class="mt-1 block w-full" wire:model.defer="credentials.password" autocomplete="name"/>
+                <x-jet-input-error for="credentials.password" class="mt-2"/>
             </div>
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm password') }}"/>
-                <x-jet-input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model.defer="user.password_confirmation" autocomplete="name"/>
-                <x-jet-input-error for="user.password_confirmation" class="mt-2"/>
+                <x-jet-input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model.defer="credentials.password_confirmation" autocomplete="name"/>
+                <x-jet-input-error for="credentials.password_confirmation" class="mt-2"/>
             </div>
         </x-slot>
         <x-slot name="actions">

@@ -2,7 +2,7 @@
 
 namespace LLoadoutInforce\Http\Livewire;
 
-use Hash;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use LLoadoutInforce\Http\Livewire\Traits\HandlesPermissions;
 use LLoadoutInforce\Http\Livewire\Traits\ShowPerks;
@@ -13,6 +13,7 @@ class User extends Component
     use HandlesPermissions, ShowPerks;
 
     public $user;
+    public $credentials;
     public $userRoles = [];
 
     protected function rules()
@@ -20,8 +21,6 @@ class User extends Component
         return [
             'user.name'                  => 'required|string',
             'user.email'                 => ['required', 'email', 'not_in:' . $this->user->id],
-            'user.password'              => 'required|confirmed',
-            'user.password_confirmation' => 'required'
         ];
     }
 
@@ -47,17 +46,24 @@ class User extends Component
     {
         $this->validate();
 
-        $this->handlePassword();
         $this->user->save();
         $this->user->syncRoles([$this->userRoles]);
 
     }
 
-    private function handlePassword()
+    public function updatePassword()
     {
-        $this->user->password = Hash::make($this->user->password);
-        //TODO : maybe this can be done better , remove because otherwise stored to db
-        unset($this->user->password_confirmation);
+        $validatedData = $this->validate([
+            'credentials.password'              => 'required|confirmed',
+            'credentials.password_confirmation' => 'required'
+        ]);
+        $this->user->forceFill([
+            'password' => \Illuminate\Support\Facades\Hash::make($this->credentials['password']),
+        ])->save();
+        Auth::login($this->user);
+
     }
+
+
 
 }
