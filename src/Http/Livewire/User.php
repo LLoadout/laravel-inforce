@@ -29,7 +29,7 @@ class User extends Component
     {
         $this->user = $user;
         $this->forUser($this->user);
-        $this->userRoles = $this->user->roles->pluck('id');
+        $this->userRoles = array_map('strval', $this->user->roles->pluck('id')->toArray());
     }
 
     public function render()

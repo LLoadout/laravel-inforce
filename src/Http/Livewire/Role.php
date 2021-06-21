@@ -10,11 +10,13 @@ class Role extends Component
     use HandlesPermissions;
 
     public $role;
+    public $description;
 
     protected function rules()
     {
         return [
             'role.name' => 'required|string',
+            'role.description' => 'required|string',
         ];
     }
 

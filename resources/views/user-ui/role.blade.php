@@ -21,6 +21,11 @@
                 <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="role.name" autocomplete="name"/>
                 <x-jet-input-error for="role.name" class="mt-2"/>
             </div>
+            <div class="col-span-6 sm:col-span-4">
+                <x-jet-label for="description" value="{{ __('Role description') }}"/>
+                <x-jet-input id="description" type="text" class="mt-1 block w-full" wire:model.defer="role.description" autocomplete="description"/>
+                <x-jet-input-error for="role.description" class="mt-2"/>
+            </div>
         </x-slot>
         <x-slot name="actions">
             <x-jet-action-message class="mr-3" on="saved">
