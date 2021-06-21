@@ -10,6 +10,9 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class MenusTable extends DataTableComponent
 {
+    public array $bulkActions = [
+        'deleteSelected' => 'Delete selected',
+    ];
 
     public function query(): Builder
     {
@@ -35,6 +38,13 @@ class MenusTable extends DataTableComponent
     public function getTableRowUrl($row): string
     {
         return route('menu', $row);
+    }
+
+    public function deleteSelected()
+    {
+        if ($this->selectedRowsQuery->count() > 0) {
+         $this->selectedRowsQuery->delete();
+        }
     }
 
 

@@ -13,6 +13,10 @@ class UsersTable extends DataTableComponent
 
     public $addRoute          = "users.edit";
 
+    public array $bulkActions = [
+        'deleteSelected' => 'Delete selected',
+    ];
+
 
     public function query(): Builder
     {
@@ -37,6 +41,13 @@ class UsersTable extends DataTableComponent
     public function getTableRowUrl($row): string
     {
         return route('users.edit', $row);
+    }
+
+    public function deleteSelected()
+    {
+        if ($this->selectedRowsQuery->count() > 0) {
+            $this->selectedRowsQuery->delete();
+        }
     }
 
 }

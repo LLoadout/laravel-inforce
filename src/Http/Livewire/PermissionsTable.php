@@ -13,6 +13,9 @@ class PermissionsTable extends DataTableComponent
 
     public $addRoute          = "permission";
 
+    public array $bulkActions = [
+        'deleteSelected' => 'Delete selected',
+    ];
 
     public function query(): Builder
     {
@@ -35,6 +38,13 @@ class PermissionsTable extends DataTableComponent
     public function getTableRowUrl($row): string
     {
         return route('permission', $row);
+    }
+
+    public function deleteSelected()
+    {
+        if ($this->selectedRowsQuery->count() > 0) {
+            $this->selectedRowsQuery->delete();
+        }
     }
 
 }

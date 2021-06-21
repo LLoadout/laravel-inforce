@@ -11,6 +11,11 @@ use Spatie\Permission\Models\Role;
 
 class RolesTable extends DataTableComponent
 {
+
+    public array $bulkActions = [
+        'deleteSelected' => 'Delete selected',
+    ];
+
     public function query(): Builder
     {
         return Role::query()
@@ -33,5 +38,12 @@ class RolesTable extends DataTableComponent
     public function getTableRowUrl($row): string
     {
         return route('role.edit', $row);
+    }
+
+    public function deleteSelected()
+    {
+        if ($this->selectedRowsQuery->count() > 0) {
+            $this->selectedRowsQuery->delete();
+        }
     }
 }
