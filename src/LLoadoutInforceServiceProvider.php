@@ -44,6 +44,10 @@ class LLoadoutInforceServiceProvider extends PackageServiceProvider
         ], 'LLoadoutInforce-seeders');
 
         $this->publishes([
+            __DIR__ . '/../resources/lang' => resource_path('lang'),
+        ], 'LLoadoutInforce-langs');
+
+        $this->publishes([
             __DIR__.'/../database/migrations/create_inforce_tables.php.stub' => base_path('database/migrations/'. date('Y_m_d_His').'_create_inforce_tables.php'),
             __DIR__.'/../database/migrations/update_roles_table.php.stub' => base_path('database/migrations/'. date('Y_m_d_His').'_update_roles_table.php'),
         ], 'LLoadoutInforce-migrations');

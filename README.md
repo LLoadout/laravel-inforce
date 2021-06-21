@@ -58,13 +58,14 @@ php artisan db:seed --class=InforceSeeder
 
 ```shell
 php artisan vendor:publish --tag=LLoadoutInforce-views
+php artisan vendor:publish --tag=LLoadoutInforce-langs
 ```
 
 ## Navigation
 
 It provides a ui for navigation management and navigation permissions.
 
-Therefore you have to add this tag after the dashboard navigation div in navigation-menu.blade.php
+Therefore you have to add this tag after the Navigation Links section navigation-menu.blade.php. Default on line 19
 
 ```php 
  <livewire:navigation/>
