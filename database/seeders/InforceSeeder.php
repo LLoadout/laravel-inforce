@@ -55,7 +55,7 @@ class InforceSeeder extends Seeder
 
 
         $usersMenu = Menu::create([
-            'name'       => __('User management'),
+            'name'       => 'User management',
             'sort_order' => $sortOrder++
         ]);
 
@@ -66,7 +66,7 @@ class InforceSeeder extends Seeder
 
         Menu::create([
             'parent_id'  => $usersMenu->id,
-            'name'       => __('Manage users'),
+            'name'       => 'Manage users',
             'route'      => 'users.index',
             'sort_order' => $sortOrder++
         ]);
@@ -78,7 +78,7 @@ class InforceSeeder extends Seeder
 
         Menu::create([
             'parent_id'  => $usersMenu->id,
-            'name'       => __('Manage roles'),
+            'name'       => 'Manage roles',
             'route'      => 'users.roles',
             'sort_order' => $sortOrder++
         ]);
@@ -90,7 +90,7 @@ class InforceSeeder extends Seeder
 
         Menu::create([
             'parent_id'  => $usersMenu->id,
-            'name'       => __('Manage access'),
+            'name'       => 'Manage access',
             'route'      => 'users.access',
             'sort_order' => $sortOrder++
         ]);
@@ -101,7 +101,7 @@ class InforceSeeder extends Seeder
         ]);
 
         $devMenu = Menu::create([
-            'name'       => __('Developer menu'),
+            'name'       => 'Developer menu',
             'sort_order' => $sortOrder++
         ]);
 
@@ -112,7 +112,7 @@ class InforceSeeder extends Seeder
 
         Menu::create([
             'parent_id'  => $devMenu->id,
-            'name'       => __('Permissions'),
+            'name'       => 'Permissions',
             'route'      => 'developers.permissions',
             'sort_order' => $sortOrder++
         ]);
@@ -124,7 +124,7 @@ class InforceSeeder extends Seeder
 
         Menu::create([
             'parent_id'  => $devMenu->id,
-            'name'       => __('Menus'),
+            'name'       => 'Menus',
             'route'      => 'developers.menus',
             'sort_order' => $sortOrder++
         ]);
