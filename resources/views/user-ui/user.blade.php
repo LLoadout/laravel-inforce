@@ -28,13 +28,23 @@
                 <x-jet-input-error for="user.email" class="mt-2"/>
             </div>
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="role" value="{{ __('Role') }}"/>
-                <select wire:model="userRoles" multiple class='w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm'>
-                    <option value="">{{ __('Choose') }}</option>
-                    @foreach($roles as $role)
-                        <option value="{{ $role->id }}">{{ $role->name }}</option>
-                    @endforeach
-                </select>
+                    <x-jet-label for="role" value="{{ __('Role') }}"/>
+                    <div class="bg-white rounded-md -space-y-px">
+                        @foreach($roles as $role)
+                        <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
+                        <label class="@if(in_array($role->id,$userRoles)) bg-indigo-50 border-indigo-200 z-10 @else border-gray-200  @endif @if($loop->first) rounded-tl-md rounded-tr-md @endif @if($loop->last) rounded-bl-md rounded-br-md @endif relative border p-4 flex cursor-pointer">
+                            <input type="checkbox" value="{{ $role->id }}" wire:model="userRoles" class="invisible" aria-labelledby="privacy-setting-{{ $loop->iteration }}-label" aria-describedby="privacy-setting-{{ $loop->iteration }}-description">
+                            <div class="flex flex-col">
+                                <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
+                                <span id="privacy-setting-{{ $loop->iteration }}-label" class="text-gray-900 block text-sm font-medium">{{ $role->name }}</span>
+                                <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
+                                <span id="privacy-setting-{{ $loop->iteration }}-description" class="text-gray-500 block text-sm">{{ $role->description }}</span>
+                            </div>
+                        </label>
+                        @endforeach
+                    </div>
+
+
                 <x-jet-input-error for="role" class="mt-2"/>
             </div>
         </x-slot>
