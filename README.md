@@ -73,3 +73,55 @@ Therefore you have to add this tag after the dashboard navigation div in navigat
 ## Logging in
 
 LLoadout inforce will default create a user with username of `john@doe.com` and the password `password`
+
+## Extending the package
+
+Assume you want to add fields to the user view and want to save the field to the database.  Than you can use the published view and extend the LLoadout user component.
+Herefore you have to create your own route to your own created component.
+
+This is the route 
+
+```php
+Route::get('/user/detail/{user?}', \App\Http\Livewire\MyUser::class)->whereNumber('id')->name('users.edit'); 
+```
+
+This can be your component
+```php
+<?php
+
+namespace App\Http\Livewire;
+
+use LLoadoutInforce\Http\Livewire\Traits\HandlesPermissions;
+use LLoadoutInforce\Http\Livewire\Traits\ShowPerks;
+
+class MyUser extends \LLoadoutInforce\Http\Livewire\User
+{
+
+
+    protected function rules()
+    {
+
+        return [
+            'user.name'                  => 'required|string',
+            'user.email'                 => ['required', 'email', 'not_in:' . $this->user->id],
+            'user.password'              => 'required|confirmed',
+            'user.password_confirmation' => 'required',
+            'user.extrafield'            => 'required'
+        ];
+    }
+
+    public function saveUser()
+    {
+        $this->validate();
+
+        $this->handlePassword();
+        $this->user->save();
+        $this->user->syncRoles([$this->userRoles]);
+
+    }
+
+
+}
+
+```
+
