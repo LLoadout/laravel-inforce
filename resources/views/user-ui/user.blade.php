@@ -3,6 +3,11 @@
         @if(!$user->id) {{ __('New') }} @endif
         {{ __('User') }}
         @if($user->id): {{ $user->name }} @endif
+        @if($user->id)
+            <a href="{{ route('users.edit') }}" class="float-right bg-blue-500 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                + {{ __('New') }}
+            </a>
+        @endif
     </h2>
 </x-slot>
 
@@ -28,10 +33,10 @@
                 <x-jet-input-error for="user.email" class="mt-2"/>
             </div>
             <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label for="role" value="{{ __('Role') }}"/>
-                    <div class="bg-white rounded-md -space-y-px">
-                        @foreach($roles as $role)
-                        <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
+                <x-jet-label for="role" value="{{ __('Role') }}"/>
+                <div class="bg-white rounded-md -space-y-px">
+                @foreach($roles as $role)
+                    <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
                         <label class="@if(in_array($role->id,$userRoles)) bg-indigo-50 border-indigo-200 z-10 @else border-gray-200  @endif @if($loop->first) rounded-tl-md rounded-tr-md @endif @if($loop->last) rounded-bl-md rounded-br-md @endif relative border p-4 flex cursor-pointer">
                             <input type="checkbox" value="{{ $role->id }}" wire:model="userRoles" class="invisible" aria-labelledby="privacy-setting-{{ $loop->iteration }}-label" aria-describedby="privacy-setting-{{ $loop->iteration }}-description">
                             <div class="flex flex-col">
@@ -41,22 +46,25 @@
                                 <span id="privacy-setting-{{ $loop->iteration }}-description" class="text-gray-500 block text-sm">{{ $role->description }}</span>
                             </div>
                         </label>
-                        @endforeach
-                    </div>
+                    @endforeach
+                </div>
+                <x-jet-input-error for="user.email" class="mt-2"/>
 
 
                 <x-jet-input-error for="role" class="mt-2"/>
             </div>
         </x-slot>
-        <x-slot name="actions">
-            <x-jet-action-message class="mr-3" on="saved">
-                {{ __('Saved.') }}
-            </x-jet-action-message>
+        @if($user->id)
+            <x-slot name="actions">
+                <x-jet-action-message class="mr-3" on="saved">
+                    {{ __('Saved.') }}
+                </x-jet-action-message>
 
-            <x-jet-button wire:loading.attr="disabled">
-                {{ __('Save') }}
-            </x-jet-button>
-        </x-slot>
+                <x-jet-button wire:loading.attr="disabled">
+                    {{ __('Save') }}
+                </x-jet-button>
+            </x-slot>
+        @endif
     </x-jet-form-section>
     <x-jet-section-border/>
 
@@ -93,21 +101,21 @@
     </x-jet-form-section>
     <x-jet-section-border/>
     @if($showPerks)
-    <div class="md:grid md:grid-cols-3 md:gap-6">
-        <x-jet-section-title>
-            <x-slot name="title">
-                {{ __('Permissions') }}
-            </x-slot>
-            <x-slot name="description">
-                {{ __('These are the user specific permissions , grayed out permissions are set via a role and cannot be changed for the user.') }}
-            </x-slot>
-        </x-jet-section-title>
-        <div class="mt-5 md:mt-0 md:col-span-2">
-            <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-md">
-            @include('LLoadoutInforce-views::user-ui.access')
+        <div class="md:grid md:grid-cols-3 md:gap-6">
+            <x-jet-section-title>
+                <x-slot name="title">
+                    {{ __('Permissions') }}
+                </x-slot>
+                <x-slot name="description">
+                    {{ __('These are the user specific permissions , grayed out permissions are set via a role and cannot be changed for the user.') }}
+                </x-slot>
+            </x-jet-section-title>
+            <div class="mt-5 md:mt-0 md:col-span-2">
+                <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-md">
+                    @include('LLoadoutInforce-views::user-ui.access')
+                </div>
             </div>
         </div>
-    </div>
-        @endif
+    @endif
 
 </div>

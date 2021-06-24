@@ -3,6 +3,11 @@
         @if(!$role->id) {{ __('New') }} @endif
         {{ __('Role') }}
         @if($role->id): {{ $role->name }} @endif
+        @if($role->id)
+            <a href="{{ route('role.edit') }}" class="float-right bg-blue-500 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                + {{ __('New') }}
+            </a>
+        @endif
     </h2>
 </x-slot>
 <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
