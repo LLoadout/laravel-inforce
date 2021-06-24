@@ -39,9 +39,4 @@ class Menu extends Model
         }
     }
 
-    public function getPermissionAttribute()
-    {
-        return $this->prefixInfo['path'];
-    }
-
 }

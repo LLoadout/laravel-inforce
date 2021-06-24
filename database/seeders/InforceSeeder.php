@@ -26,7 +26,7 @@ class InforceSeeder extends Seeder
         DB::table('role_has_permissions')->delete();
         DB::table('roles')->delete();
 
-        collect([ 'admin', 'user'])->each(function ($name) {
+        collect(['admin', 'user'])->each(function ($name) {
             DB::table('roles')->insert([
                 'name'       => $name,
                 'guard_name' => 'web'
@@ -37,6 +37,7 @@ class InforceSeeder extends Seeder
         collect(["customers", "suppliers", "products", "news"])->each(function ($section) use ($sortOrder) {
             Menu::create([
                 'name'       => ucfirst($section),
+                'permission' => 'menu.' . $section,
                 'sort_order' => $sortOrder++
             ]);
 
@@ -56,6 +57,7 @@ class InforceSeeder extends Seeder
 
         $usersMenu = Menu::create([
             'name'       => 'User management',
+            'permission' => 'menu.user-management',
             'sort_order' => $sortOrder++
         ]);
 
@@ -68,6 +70,7 @@ class InforceSeeder extends Seeder
             'parent_id'  => $usersMenu->id,
             'name'       => 'Manage users',
             'route'      => 'users.index',
+            'permission' => 'menu.user-management.manage-users',
             'sort_order' => $sortOrder++
         ]);
 
@@ -80,6 +83,7 @@ class InforceSeeder extends Seeder
             'parent_id'  => $usersMenu->id,
             'name'       => 'Manage roles',
             'route'      => 'users.roles',
+            'permission' => 'menu.user-management.manage-roles',
             'sort_order' => $sortOrder++
         ]);
 
@@ -92,6 +96,7 @@ class InforceSeeder extends Seeder
             'parent_id'  => $usersMenu->id,
             'name'       => 'Manage access',
             'route'      => 'users.access',
+            'permission' => 'menu.user-management.manage-access',
             'sort_order' => $sortOrder++
         ]);
 
@@ -102,6 +107,7 @@ class InforceSeeder extends Seeder
 
         $devMenu = Menu::create([
             'name'       => 'Developer menu',
+            'permission' => 'menu.developer-menu',
             'sort_order' => $sortOrder++
         ]);
 
@@ -114,6 +120,7 @@ class InforceSeeder extends Seeder
             'parent_id'  => $devMenu->id,
             'name'       => 'Permissions',
             'route'      => 'developers.permissions',
+            'permission' => 'menu.developer-menu.permissions',
             'sort_order' => $sortOrder++
         ]);
 
@@ -126,6 +133,7 @@ class InforceSeeder extends Seeder
             'parent_id'  => $devMenu->id,
             'name'       => 'Menus',
             'route'      => 'developers.menus',
+            'permission' => 'menu.developer-menu.menus',
             'sort_order' => $sortOrder++
         ]);
 
@@ -145,12 +153,11 @@ class InforceSeeder extends Seeder
         $developer->givePermissionTo('menu.developer-menu.permissions');
         $developer->givePermissionTo('menu.developer-menu.menus');
 
-        $user = User::create(['name' => 'John Doe' , 'email' => 'john@doe.com', 'password' => \Hash::make('password')]);
+        $user = User::create(['name' => 'John Doe', 'email' => 'john@doe.com', 'password' => \Hash::make('password')]);
 
         User::all()->each(function ($user) {
             $user->assignRole('superuser');
         });
-
 
 
     }

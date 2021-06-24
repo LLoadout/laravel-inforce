@@ -30,9 +30,9 @@ class Menu extends Component
             $prefixInfo = $menu->prefixInfo;
             $order      = (!($menu->parent) ? $menu->sort_order * 100 : ($prefixInfo['root']->sort_order * 100) + $prefixInfo['count']);
             return [
-                'id'         => $menu->id,
-                'name'       => $prefixInfo['name'],
-                'order'      => $order
+                'id'    => $menu->id,
+                'name'  => $prefixInfo['name'],
+                'order' => $order
             ];
         });
         $this->parents = $parents->sortBy('order')->pluck('name', 'id')->toArray();
@@ -55,12 +55,17 @@ class Menu extends Component
         $this->validate();
         $this->menu->parent_id = $this->menu->parent_id == 0 ? null : $this->menu->parent_id;
 
-        Permission::firstOrCreate([
-            'name'       => 'menu.' . \Str::slug($this->menu->name),
-            'guard_name' => 'web'
-        ]);
+        if(!$this->menu->permission){
+            $this->menu->permission = $this->menu->prefixinfo['path'];
+            Permission::firstOrCreate([
+                'name'       => $this->menu->permission,
+                'guard_name' => 'web'
+            ]);
+
+        }
 
         $this->menu->save();
+
         $this->mount($this->menu);
         $this->emit('menuUpdated');
         $this->emit('saved');

@@ -50,6 +50,7 @@ class LLoadoutInforceServiceProvider extends PackageServiceProvider
         $this->publishes([
             __DIR__.'/../database/migrations/create_inforce_tables.php.stub' => base_path('database/migrations/'. date('Y_m_d_His').'_create_inforce_tables.php'),
             __DIR__.'/../database/migrations/update_roles_table.php.stub' => base_path('database/migrations/'. date('Y_m_d_His').'_update_roles_table.php'),
+            __DIR__.'/../database/migrations/update_menus_table.php.stub' => base_path('database/migrations/'. date('Y_m_d_His').'_update_menus_table.php'),
         ], 'LLoadoutInforce-migrations');
 
         return $this;
