@@ -19,8 +19,8 @@ class User extends Component
     protected function rules()
     {
         return [
-            'user.name'                  => 'required|string',
-            'user.email'                 => ['required', 'email', 'not_in:' . $this->user->id],
+            'user.name'  => 'required|string',
+            'user.email' => ['required', 'email', 'not_in:' . $this->user->id],
         ];
     }
 
@@ -54,16 +54,19 @@ class User extends Component
     public function updatePassword()
     {
         $validatedData = $this->validate([
-            'credentials.password'              => 'required|confirmed',
-            'credentials.password_confirmation' => 'required'
-        ]);
+                'credentials.password'              => 'required|confirmed',
+                'credentials.password_confirmation' => 'required'
+            ] + $this->rules());
+
         $this->user->forceFill([
             'password' => \Illuminate\Support\Facades\Hash::make($this->credentials['password']),
         ])->save();
-        Auth::login($this->user);
+
+        //if edited user is same as logged in user
+        if ($this->user->id == auth()->user()->id)
+            Auth::login($this->user);
 
     }
-
 
 
 }
