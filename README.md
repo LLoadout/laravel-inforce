@@ -37,6 +37,8 @@ If you hadn't already installed Laravel Permissions , install it first, therefor
 
 https://spatie.be/docs/laravel-permission/v4/installation-laravel
 
+Attention : don't forget to read the prerequisites : https://spatie.be/docs/laravel-permission/v4/prerequisites
+
 ## Installation of LLoadout inforce 
 
 ```shell
