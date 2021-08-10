@@ -20,11 +20,15 @@ class InforceSeeder extends Seeder
     public function run()
     {
         app()->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
-        DB::table('permissions')->delete();
-        DB::table('menus')->delete();
-        DB::table('model_has_permissions')->delete();
-        DB::table('role_has_permissions')->delete();
-        DB::table('roles')->delete();
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table('permissions')->truncate();
+        DB::table('users')->truncate();
+        DB::table('menus')->truncate();
+        DB::table('model_has_permissions')->truncate();
+        DB::table('role_has_permissions')->truncate();
+        DB::table('roles')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         collect(['admin', 'user'])->each(function ($name) {
             DB::table('roles')->insert([
@@ -33,27 +37,7 @@ class InforceSeeder extends Seeder
             ]);
         });
 
-        $sortOrder = 1;
-        collect(["customers", "suppliers", "products", "news"])->each(function ($section) use ($sortOrder) {
-            Menu::create([
-                'name'       => ucfirst($section),
-                'permission' => 'menu.' . $section,
-                'sort_order' => $sortOrder++
-            ]);
-
-            Permission::create([
-                'name'       => 'menu.' . $section,
-                'guard_name' => 'web'
-            ]);
-
-            collect(['create', 'read', 'update', 'delete'])->each(function ($permission) use ($section) {
-                Permission::create([
-                    'name'       => $section . "." . $permission,
-                    'guard_name' => 'web'
-                ]);
-            });
-        });
-
+        $sortOrder = 0;
 
         $usersMenu = Menu::create([
             'name'       => 'User management',
