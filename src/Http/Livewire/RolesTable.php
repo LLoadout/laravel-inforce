@@ -27,8 +27,6 @@ class RolesTable extends DataTableComponent
     {
 
         return [
-            Column::make('ID', 'id')
-                ->sortable(),
             Column::make('Name', 'name')
                 ->sortable(),
         ];

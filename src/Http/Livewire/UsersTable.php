@@ -28,8 +28,6 @@ class UsersTable extends DataTableComponent
     {
 
         return [
-            Column::make('ID', 'id')
-                ->sortable(),
             Column::make('Name', 'name')
                 ->sortable(),
             Column::make('Email', 'email')

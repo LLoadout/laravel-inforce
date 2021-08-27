@@ -17,7 +17,7 @@ class MenusTable extends DataTableComponent
     public function query(): Builder
     {
         return Menu::query()
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%')->orWhere('route', 'like', '%'.$term.'%'));
+            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%')->orWhere('route', 'like', '%'.$term.'%'))->whereEditable(true);
 
     }
 
@@ -25,8 +25,6 @@ class MenusTable extends DataTableComponent
     {
 
         return [
-            Column::make('ID', 'id')
-                ->sortable(),
             Column::make('Name', 'name')
                 ->sortable(),
             Column::make('Route', 'route')

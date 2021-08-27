@@ -5,7 +5,7 @@
             <div class="relative text-sm" x-data="{ open: false }">
                 <div class="group inline-block">
                     <i class="absolute top-1.5 -left-3.5 text-gray-500" style="width: 15px;height:15px">{!! $menu->icon !!}</i>
-                    @if($showPerks)
+                    @if($showPerks && $menu->editable)
                         <a class="flex absolute top-1.5 -left-3.5 text-gray-500" href="{{ route('menu',$menu->id) }}">
                             <svg style="height: 10px;margin-top: 2px;margin-right:10px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>

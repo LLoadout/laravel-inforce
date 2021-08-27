@@ -37,17 +37,19 @@ class InforceSeeder extends Seeder
             ]);
         });
 
-        $sortOrder = 0;
+        $sortOrder = 999;
 
         $usersMenu = Menu::create([
             'name'       => 'User management',
             'permission' => 'menu.user-management',
-            'sort_order' => $sortOrder++
+            'sort_order' => $sortOrder++,
+            'editable'   => false
         ]);
 
         Permission::create([
             'name'       => 'menu.user-management',
-            'guard_name' => 'web'
+            'guard_name' => 'web',
+            'editable'   => false
         ]);
 
         Menu::create([
@@ -55,12 +57,14 @@ class InforceSeeder extends Seeder
             'name'       => 'Manage users',
             'route'      => 'users.index',
             'permission' => 'menu.user-management.manage-users',
-            'sort_order' => $sortOrder++
+            'sort_order' => $sortOrder++,
+            'editable'   => false
         ]);
 
         Permission::create([
             'name'       => 'menu.user-management.manage-users',
-            'guard_name' => 'web'
+            'guard_name' => 'web',
+            'editable'   => false
         ]);
 
         Menu::create([
@@ -68,12 +72,14 @@ class InforceSeeder extends Seeder
             'name'       => 'Manage roles',
             'route'      => 'users.roles',
             'permission' => 'menu.user-management.manage-roles',
-            'sort_order' => $sortOrder++
+            'sort_order' => $sortOrder++,
+            'editable'   => false
         ]);
 
         Permission::create([
             'name'       => 'menu.user-management.manage-roles',
-            'guard_name' => 'web'
+            'guard_name' => 'web',
+            'editable'   => false
         ]);
 
         Menu::create([
@@ -81,23 +87,27 @@ class InforceSeeder extends Seeder
             'name'       => 'Manage access',
             'route'      => 'users.access',
             'permission' => 'menu.user-management.manage-access',
-            'sort_order' => $sortOrder++
+            'sort_order' => $sortOrder++,
+            'editable'   => false
         ]);
 
         Permission::create([
             'name'       => 'menu.user-management.manage-access',
-            'guard_name' => 'web'
+            'guard_name' => 'web',
+            'editable'   => false
         ]);
 
         $devMenu = Menu::create([
             'name'       => 'Developer menu',
             'permission' => 'menu.developer-menu',
-            'sort_order' => $sortOrder++
+            'sort_order' => $sortOrder++,
+            'editable'   => false
         ]);
 
         Permission::create([
             'name'       => 'menu.developer-menu',
-            'guard_name' => 'web'
+            'guard_name' => 'web',
+            'editable'   => false
         ]);
 
         Menu::create([
@@ -105,12 +115,14 @@ class InforceSeeder extends Seeder
             'name'       => 'Permissions',
             'route'      => 'developers.permissions',
             'permission' => 'menu.developer-menu.permissions',
-            'sort_order' => $sortOrder++
+            'sort_order' => $sortOrder++,
+            'editable'   => false
         ]);
 
         Permission::create([
             'name'       => 'menu.developer-menu.permissions',
-            'guard_name' => 'web'
+            'guard_name' => 'web',
+            'editable'   => false
         ]);
 
         Menu::create([
@@ -118,12 +130,14 @@ class InforceSeeder extends Seeder
             'name'       => 'Menus',
             'route'      => 'developers.menus',
             'permission' => 'menu.developer-menu.menus',
-            'sort_order' => $sortOrder++
+            'sort_order' => $sortOrder++,
+            'editable'   => false
         ]);
 
         Permission::create([
             'name'       => 'menu.developer-menu.menus',
-            'guard_name' => 'web'
+            'guard_name' => 'web',
+            'editable'   => false
         ]);
 
         $developer = Role::create(['name' => 'superuser']);

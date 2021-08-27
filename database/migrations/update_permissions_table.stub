@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateMenusTable extends Migration
+class UpdatePermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdateMenusTable extends Migration
      */
     public function up()
     {
-        Schema::table('menus', function (Blueprint $table) {
-            $table->string('permission')->after('route')->nullable();
+        Schema::table('permissions', function (Blueprint $table) {
+            $table->boolean('editable')->default(true);
         });
     }
 
@@ -25,8 +25,8 @@ class UpdateMenusTable extends Migration
      */
     public function down()
     {
-        Schema::table('menus', function (Blueprint $table) {
-            $table->dropColumn('permission');
+        Schema::table('permissions', function (Blueprint $table) {
+            $table->dropColumn('editable');
         });
     }
 }

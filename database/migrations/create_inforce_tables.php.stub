@@ -18,8 +18,10 @@ class CreateInforceTables extends Migration
             $table->bigInteger('parent_id')->nullable();
             $table->string('name');
             $table->string('route')->nullable();
+            $table->string('permission')->nullable();
             $table->bigInteger('sort_order');
             $table->text('icon')->nullable();
+            $table->boolean('editable')->default(true);
             $table->timestamps();
         });
     }

@@ -5,7 +5,7 @@
                 <li class="rounded-sm relative px-4 py-2 hover:bg-gray-100">
                     <button class="w-full text-left flex items-center outline-none focus:outline-none">
                     <span class="flex pr-1 flex-1">
-                        @if($showPerks)
+                        @if($showPerks && $menu->editable)
                             <a class="flex" href="{{ route('menu',$__menu->id) }}">
                             <svg style="height: 10px;margin-top: 4px;margin-right:10px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
@@ -25,7 +25,7 @@
                 </li>
             @else
                 <li class="flex px-3 py-1 hover:bg-gray-100 block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
-                    @if($showPerks)
+                    @if($showPerks && $menu->editable)
                         <a class="flex" href="{{ route('menu',$__menu->id) }}">
                             <svg style="height: 10px;margin-top: 4px;margin-right:10px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>

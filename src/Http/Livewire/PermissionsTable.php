@@ -20,15 +20,13 @@ class PermissionsTable extends DataTableComponent
     public function query(): Builder
     {
         return Permission::query()
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%'));
+            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%'))->whereEditable(true);
     }
 
     public function columns(): array
     {
 
         return [
-            Column::make('ID', 'id')
-                ->sortable(),
             Column::make('Name', 'name')
                 ->sortable(),
         ];
