@@ -117,3 +117,8 @@ class MyUser extends \LLoadoutInforce\Http\Livewire\User
 
 ```
 
+# Documentation 
+
+Via the permissions menu you can create your permissions, they are stored in the database.  Via the user or role menu it is possible to assign a permission to a role or a user.
+
+It is also possible to create menu's and corresponding permissions for the menu's.  Giving users or roles access to the menu's via the roles and users management.
