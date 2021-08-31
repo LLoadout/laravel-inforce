@@ -38,7 +38,7 @@ class Menu extends Component
         $this->parents = $parents->sortBy('order')->pluck('name', 'id')->toArray();
     }
 
-    public function render() : \View
+    public function render() : \Illuminate\View\View
     {
         $menus   = \LLoadoutInforce\Models\Menu::with('menu.menu.menu')->orderBy('sort_order')->get();
         $parents = $this->parents;
