@@ -82,21 +82,6 @@ class InforceSeeder extends Seeder
             'editable'   => false
         ]);
 
-        Menu::create([
-            'parent_id'  => $usersMenu->id,
-            'name'       => 'Manage access',
-            'route'      => 'users.access',
-            'permission' => 'menu.user-management.manage-access',
-            'sort_order' => $sortOrder++,
-            'editable'   => false
-        ]);
-
-        Permission::create([
-            'name'       => 'menu.user-management.manage-access',
-            'guard_name' => 'web',
-            'editable'   => false
-        ]);
-
         $devMenu = Menu::create([
             'name'       => 'Developer menu',
             'permission' => 'menu.developer-menu',
@@ -145,7 +130,6 @@ class InforceSeeder extends Seeder
         $developer->givePermissionTo('menu.user-management');
         $developer->givePermissionTo('menu.user-management.manage-users');
         $developer->givePermissionTo('menu.user-management.manage-roles');
-        $developer->givePermissionTo('menu.user-management.manage-access');
 
         $developer->givePermissionTo('menu.developer-menu');
         $developer->givePermissionTo('menu.developer-menu.permissions');
