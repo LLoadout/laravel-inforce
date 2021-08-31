@@ -18,9 +18,7 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::get('/roles', Roles::class)->name('users.roles');
     Route::get('/role/{role?}', Role::class)->name('role.edit');
-
-    Route::get('/access', Access::class)->name('users.access');
-
+    
     Route::get('/permissions', Permissions::class)->name('developers.permissions');
     Route::get('/permission/{permission?}', Permission::class)->name('permission');
 
