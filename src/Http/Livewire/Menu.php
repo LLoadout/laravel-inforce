@@ -12,7 +12,7 @@ class Menu extends Component
     public  $menu;
     private $parents;
 
-    protected function rules()
+    protected function rules() : array
     {
         return [
             'menu.name'       => 'required|string',
@@ -23,7 +23,7 @@ class Menu extends Component
         ];
     }
 
-    public function mount(\LLoadoutInforce\Models\Menu $menu)
+    public function mount(\LLoadoutInforce\Models\Menu $menu) : void
     {
         $this->menu    = $menu;
         $parents       = \LLoadoutInforce\Models\Menu::with('parent')->get()->map(function ($menu) {
@@ -38,19 +38,19 @@ class Menu extends Component
         $this->parents = $parents->sortBy('order')->pluck('name', 'id')->toArray();
     }
 
-    public function render()
+    public function render() : \View
     {
         $menus   = \LLoadoutInforce\Models\Menu::with('menu.menu.menu')->orderBy('sort_order')->get();
         $parents = $this->parents;
         return view('LLoadoutInforce-views::menu-ui.menu', compact('menus', 'parents'));
     }
 
-    public function delete()
+    public function delete() : void
     {
         $this->menu->delete();
     }
 
-    public function updateMenu()
+    public function updateMenu() : void
     {
         $this->validate();
         $this->menu->parent_id = $this->menu->parent_id == 0 ? null : $this->menu->parent_id;
@@ -61,7 +61,6 @@ class Menu extends Component
                 'name'       => $this->menu->permission,
                 'guard_name' => 'web'
             ]);
-
         }
 
         $this->menu->save();

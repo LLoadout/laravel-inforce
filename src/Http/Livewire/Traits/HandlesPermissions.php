@@ -6,6 +6,7 @@ use App\Models\User;
 use LLoadoutInforce\Services\Grouper;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Str;
 
 
 trait HandlesPermissions
@@ -32,7 +33,9 @@ trait HandlesPermissions
     {
         $this->selectedModel    = $model;
         $this->access           = Permission::all();
-        $this->permissionGroups = app(Grouper::class)->exec($this->access->pluck('name', 'id'));
+        $permissions = $this->access->pluck('name', 'id');
+        $dottedStrings = $this->makeDottedStringIfNotDotted($permissions);
+        $this->permissionGroups = app(Grouper::class)->exec($dottedStrings);
     }
 
     public function forGroup($group)
@@ -53,5 +56,15 @@ trait HandlesPermissions
     public function assignAll()
     {
         $this->selectedModel->givePermissionTo(Permission::where('name', 'like', $this->selectedGroup . ".%")->get());
+    }
+
+    private function makeDottedStringIfNotDotted($strings)
+    {
+        return $strings->transform(function ($string) {
+            if (!Str::contains($string, '.')) {
+                return "can." . $string;
+            }
+            return $string;
+        });
     }
 }

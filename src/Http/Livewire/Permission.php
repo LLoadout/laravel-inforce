@@ -38,7 +38,7 @@ class Permission extends Component
         if($this->permission->isDirty()){
             $original = $this->permission->getOriginal('name');
             //update menu with this permission to new permission
-            $menu = \LLoadoutInforce\Models\Menu::wherePermission($original)->update(['permission' => $this->permission->name]);
+            \LLoadoutInforce\Models\Menu::wherePermission($original)->update(['permission' => $this->permission->name]);
         }
 
         $this->permission->save();

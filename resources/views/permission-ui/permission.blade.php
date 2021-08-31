@@ -21,7 +21,7 @@
             <br/>
             @verbatim
                 <br/>@can(@endverbatim'{{ $permission->name }}'@verbatim)<br/>
-                &nbsp;&nbsp;//<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;/* code here */<br/>
                 @endcan<br/>
             @endverbatim
         </x-slot>
