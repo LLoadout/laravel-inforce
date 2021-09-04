@@ -35,6 +35,7 @@
         "sort-packages": true
     },
     "require-dev": {
+        "orchestra/testbench": "^6.20",
         "phpunit/phpunit": "^9.5"
     }
 }

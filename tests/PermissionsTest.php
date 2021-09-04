@@ -1,14 +1,20 @@
 <?php
+
 namespace Permissions\Tests;
 
+use LLoadoutInforce\Services\Grouper;
 use PHPUnit\Framework\TestCase;
 
 
-class Permissions extends TestCase
+class PermissionsTest extends TestCase
 {
     /** @test */
     public function test()
     {
-        dd("initialised");
+        $grouper = app(Grouper::class);
+
+        $grouped = $grouper->exec(collect(['string.string', 'otherstring.otherstring']));
+        $this->assertIsArray($grouped);
+        $this->assertCount(2, $grouped);
     }
 }
