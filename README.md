@@ -1,3 +1,4 @@
+![Tests](https://github.com/LLoadout/inforce/workflows/tests/badge.svg)
 ![Downloads](https://img.shields.io/packagist/dt/lloadout/inforce.svg?style=flat-square)
 
 <p align="center">
