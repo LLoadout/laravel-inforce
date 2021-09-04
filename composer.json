@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
+        "php" : "^7.2.5|^8.0",
         "livewire/livewire": "^2.0",
         "spatie/laravel-package-tools": "^1.1",
         "rappasoft/laravel-livewire-tables" : "^1.10"
