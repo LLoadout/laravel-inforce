@@ -21,6 +21,32 @@ With LLoadout Inforce you will kickstart your Laravel development when using Lar
 LLoadout inforce will add a ui for managing users, roles, permission and menus.  It will also provide you with
 an ui to link users to roles and assign permissions to roles.
 
+### manage roles 
+
+you can manage roles and assign permissions to the roles 
+
+<p align="center">
+    <img src="https://github.com/LLoadout/assets/blob/master/inforce/roles.png"  title="LLoadout inforce">
+</p>
+
+### manage users 
+
+you can manage users and assign them a role.  You can also assign permissions on user level.
+
+<p align="center">
+    <img src="https://github.com/LLoadout/assets/blob/master/inforce/users.png"  title="LLoadout inforce">
+</p>
+
+### manage menus
+
+you can manage menus
+
+<p align="center">
+    <img src="https://github.com/LLoadout/assets/blob/master/inforce/menus.png"  title="LLoadout inforce">
+</p>
+
+
+
 ## Installation
 
 
