@@ -6,17 +6,14 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Spatie\Permission\Models\Role;
 
 class UsersTable extends DataTableComponent
 {
-
-    public $addRoute          = "users.edit";
+    public $addRoute = "users.edit";
 
     public array $bulkActions = [
         'deleteSelected' => 'Delete selected',
     ];
-
 
     public function query(): Builder
     {
@@ -26,14 +23,12 @@ class UsersTable extends DataTableComponent
 
     public function columns(): array
     {
-
         return [
             Column::make('Name', 'name')
                 ->sortable(),
             Column::make('Email', 'email')
                 ->sortable(),
         ];
-
     }
 
     public function getTableRowUrl($row): string
@@ -47,5 +42,4 @@ class UsersTable extends DataTableComponent
             $this->selectedRowsQuery->delete();
         }
     }
-
 }

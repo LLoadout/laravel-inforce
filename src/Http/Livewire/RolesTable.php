@@ -2,16 +2,13 @@
 
 namespace LLoadoutInforce\Http\Livewire;
 
-use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
-use Rappasoft\LaravelLivewireTables\Traits\HtmlComponents;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Spatie\Permission\Models\Role;
 
 class RolesTable extends DataTableComponent
 {
-
     public array $bulkActions = [
         'deleteSelected' => 'Delete selected',
     ];
@@ -20,17 +17,14 @@ class RolesTable extends DataTableComponent
     {
         return Role::query()
             ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%'));
-
     }
 
     public function columns(): array
     {
-
         return [
             Column::make('Name', 'name')
                 ->sortable(),
         ];
-
     }
 
     public function getTableRowUrl($row): string

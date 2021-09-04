@@ -2,7 +2,6 @@
 
 namespace LLoadoutInforce\Http\Livewire;
 
-use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use LLoadoutInforce\Models\Menu;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
@@ -18,19 +17,16 @@ class MenusTable extends DataTableComponent
     {
         return Menu::query()
             ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%')->orWhere('route', 'like', '%'.$term.'%'))->whereEditable(true);
-
     }
 
     public function columns(): array
     {
-
         return [
             Column::make('Name', 'name')
                 ->sortable(),
             Column::make('Route', 'route')
                 ->sortable(),
         ];
-
     }
 
     public function getTableRowUrl($row): string
@@ -41,9 +37,7 @@ class MenusTable extends DataTableComponent
     public function deleteSelected()
     {
         if ($this->selectedRowsQuery->count() > 0) {
-         $this->selectedRowsQuery->delete();
+            $this->selectedRowsQuery->delete();
         }
     }
-
-
 }

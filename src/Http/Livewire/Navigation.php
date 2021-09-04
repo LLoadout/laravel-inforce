@@ -11,10 +11,10 @@ class Navigation extends Component
 
     protected $listeners = ['menuUpdated' => 'render'];
 
-
     public function render()
     {
         $menus = $this->getMenus();
+
         return view('LLoadoutInforce-views::menu-ui.navigation', compact('menus'));
     }
 
@@ -22,5 +22,4 @@ class Navigation extends Component
     {
         return \LLoadoutInforce\Models\Menu::whereNull('parent_id')->with('menu')->orderBy('sort_order')->get()->toBase();
     }
-
 }

@@ -5,7 +5,6 @@ namespace Permissions\Tests;
 use LLoadoutInforce\Services\Grouper;
 use PHPUnit\Framework\TestCase;
 
-
 class PermissionsTest extends TestCase
 {
     /** @test */

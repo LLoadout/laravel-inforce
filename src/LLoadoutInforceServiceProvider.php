@@ -1,6 +1,5 @@
 <?php namespace LLoadoutInforce;
 
-use App\Http\Livewire\Roles;
 use Livewire\Livewire;
 use LLoadoutInforce\Http\Livewire\Access;
 use LLoadoutInforce\Http\Livewire\Menu;
@@ -17,7 +16,6 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LLoadoutInforceServiceProvider extends PackageServiceProvider
 {
-
     public function configurePackage(Package $package): void
     {
         $package->name('laravel-permission-ui');
@@ -29,12 +27,12 @@ class LLoadoutInforceServiceProvider extends PackageServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'LLoadoutInforce-views');
         $this->loadLivewireComponents();
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+
         return $this;
     }
 
     private function publishAssets()
     {
-
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/LLoadoutInforce-views'),
         ], 'LLoadoutInforce-views');

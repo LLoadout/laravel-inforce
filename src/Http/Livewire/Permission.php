@@ -2,12 +2,10 @@
 
 namespace LLoadoutInforce\Http\Livewire;
 
-
 use Livewire\Component;
 
 class Permission extends Component
 {
-
     public $permission;
 
     protected function rules()
@@ -35,7 +33,7 @@ class Permission extends Component
     public function updatePermission()
     {
         $this->validate();
-        if($this->permission->isDirty()){
+        if ($this->permission->isDirty()) {
             $original = $this->permission->getOriginal('name');
             //update menu with this permission to new permission
             \LLoadoutInforce\Models\Menu::wherePermission($original)->update(['permission' => $this->permission->name]);
@@ -43,7 +41,5 @@ class Permission extends Component
 
         $this->permission->save();
         $this->emit('saved');
-
     }
-
 }

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use LLoadoutInforce\Http\Livewire\Access;
 use LLoadoutInforce\Http\Livewire\Menu;
 use LLoadoutInforce\Http\Livewire\Menus;
 use LLoadoutInforce\Http\Livewire\Permission;
@@ -12,7 +11,6 @@ use LLoadoutInforce\Http\Livewire\User;
 use LLoadoutInforce\Http\Livewire\Users;
 
 Route::middleware(['web', 'auth'])->group(function () {
-
     Route::get('/users', Users::class)->name('users.index');
     Route::get('/user/detail/{user?}', User::class)->whereNumber('id')->name('users.edit');
 
@@ -24,5 +22,4 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::get('/menus', Menus::class)->name('developers.menus');
     Route::get('/menu/{menu?}', Menu::class)->name('menu');
-
 });

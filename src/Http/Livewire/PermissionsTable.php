@@ -2,16 +2,14 @@
 
 namespace LLoadoutInforce\Http\Livewire;
 
-use App\User;
-use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Eloquent\Builder;
-use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Rappasoft\LaravelLivewireTables\Views\Column;
+use Spatie\Permission\Models\Permission;
 
 class PermissionsTable extends DataTableComponent
 {
-
-    public $addRoute          = "permission";
+    public $addRoute = "permission";
 
     public array $bulkActions = [
         'deleteSelected' => 'Delete selected',
@@ -25,12 +23,10 @@ class PermissionsTable extends DataTableComponent
 
     public function columns(): array
     {
-
         return [
             Column::make('Name', 'name')
                 ->sortable(),
         ];
-
     }
 
     public function getTableRowUrl($row): string
@@ -44,5 +40,4 @@ class PermissionsTable extends DataTableComponent
             $this->selectedRowsQuery->delete();
         }
     }
-
 }

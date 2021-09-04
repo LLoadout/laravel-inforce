@@ -41,7 +41,5 @@ class Role extends Component
         $this->validate();
         $this->role->save();
         $this->emit('saved');
-
     }
-
 }
