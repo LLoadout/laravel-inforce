@@ -98,6 +98,22 @@ Therefore you have to add this tag after the Navigation Links section navigation
 
 ```php 
  <livewire:navigation/>
+
+ or
+
+@if(Auth::user()->hasRole('superuser')) // or your optional roles
+    @livewire('user-management-menus')
+    @livewire('developer-menus')
+@endif
+```
+
+And add mobile menu default on line 214
+
+```php
+@if(Auth::user()->hasRole('superuser'))  // or your optional roles
+    @livewire('user-management-menus-mobile')
+    @livewire('developer-menus-mobile')
+@endif
 ```
 
 ## Logging in
