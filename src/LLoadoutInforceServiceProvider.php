@@ -1,18 +1,18 @@
 <?php namespace LLoadoutInforce;
 
 use Livewire\Livewire;
-use LLoadoutInforce\Http\Livewire\Menu;
-use LLoadoutInforce\Http\Livewire\Role;
-use LLoadoutInforce\Http\Livewire\User;
-use Spatie\LaravelPackageTools\Package;
 use LLoadoutInforce\Http\Livewire\Access;
+use LLoadoutInforce\Http\Livewire\Menu;
 use LLoadoutInforce\Http\Livewire\MenusTable;
 use LLoadoutInforce\Http\Livewire\Navigation;
 use LLoadoutInforce\Http\Livewire\Permission;
-use LLoadoutInforce\Http\Livewire\RolesTable;
-use LLoadoutInforce\Http\Livewire\UsersTable;
 use LLoadoutInforce\Http\Livewire\PermissionsTable;
+use LLoadoutInforce\Http\Livewire\Role;
+use LLoadoutInforce\Http\Livewire\RolesTable;
+use LLoadoutInforce\Http\Livewire\User;
 use LLoadoutInforce\Http\Livewire\UserManagementMenus;
+use LLoadoutInforce\Http\Livewire\UsersTable;
+use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LLoadoutInforceServiceProvider extends PackageServiceProvider
