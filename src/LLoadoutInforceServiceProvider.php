@@ -1,17 +1,18 @@
 <?php namespace LLoadoutInforce;
 
 use Livewire\Livewire;
-use LLoadoutInforce\Http\Livewire\Access;
 use LLoadoutInforce\Http\Livewire\Menu;
+use LLoadoutInforce\Http\Livewire\Role;
+use LLoadoutInforce\Http\Livewire\User;
+use Spatie\LaravelPackageTools\Package;
+use LLoadoutInforce\Http\Livewire\Access;
 use LLoadoutInforce\Http\Livewire\MenusTable;
 use LLoadoutInforce\Http\Livewire\Navigation;
 use LLoadoutInforce\Http\Livewire\Permission;
-use LLoadoutInforce\Http\Livewire\PermissionsTable;
-use LLoadoutInforce\Http\Livewire\Role;
 use LLoadoutInforce\Http\Livewire\RolesTable;
-use LLoadoutInforce\Http\Livewire\User;
 use LLoadoutInforce\Http\Livewire\UsersTable;
-use Spatie\LaravelPackageTools\Package;
+use LLoadoutInforce\Http\Livewire\PermissionsTable;
+use LLoadoutInforce\Http\Livewire\UserManagementMenus;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LLoadoutInforceServiceProvider extends PackageServiceProvider
@@ -63,6 +64,10 @@ class LLoadoutInforceServiceProvider extends PackageServiceProvider
         Livewire::component('menu', Menu::class);
         Livewire::component('menus-table', MenusTable::class);
         Livewire::component('navigation', Navigation::class);
+        Livewire::component('user-management-menus', UserManagementMenus::class);
+        Livewire::component('user-management-menus-mobile', UserManagementMenusMobile::class);
+        Livewire::component('developer-menus', DeveloperMenus::class);
+        Livewire::component('developer-menus-mobile', DeveloperMenusMobile::class);
 
         Livewire::component('roles-table', RolesTable::class);
         Livewire::component('users-table', UsersTable::class);
