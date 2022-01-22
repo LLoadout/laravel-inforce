@@ -59,9 +59,9 @@ https://jetstream.laravel.com/2.x/installation.html#livewire
 
 If you hadn't already installed Laravel Permissions , install it first, therefor I refer to the docs of Spatie
 
-https://spatie.be/docs/laravel-permission/v4/installation-laravel
+https://spatie.be/docs/laravel-permission/v5/installation-laravel
 
-Attention : don't forget to read the prerequisites : https://spatie.be/docs/laravel-permission/v4/prerequisites
+Attention : don't forget to read the prerequisites : https://spatie.be/docs/laravel-permission/v5/prerequisites
 
 ## Installation of LLoadout inforce
 
