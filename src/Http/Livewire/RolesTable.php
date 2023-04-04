@@ -5,7 +5,6 @@ namespace LLoadoutInforce\Http\Livewire;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 use Spatie\Permission\Models\Role;
 
 class RolesTable extends DataTableComponent
@@ -25,7 +24,7 @@ class RolesTable extends DataTableComponent
     public function builder(): Builder
     {
         return Role::query()
-            ->when($this->columnSearch['name'] ?? null, fn($query, $value) => $query->where('role.name', 'like', '%' . $value . '%'));
+            ->when($this->columnSearch['name'] ?? null, fn ($query, $value) => $query->where('role.name', 'like', '%' . $value . '%'));
     }
 
     public function columns(): array

@@ -26,7 +26,7 @@ class PermissionsTable extends DataTableComponent
     public function builder(): Builder
     {
         return Permission::query()
-            ->when($this->columnSearch['name'] ?? null, fn($query, $value) => $query->where('permissions.name', 'like', '%' . $value . '%'));
+            ->when($this->columnSearch['name'] ?? null, fn ($query, $value) => $query->where('permissions.name', 'like', '%' . $value . '%'));
     }
 
     public function columns(): array

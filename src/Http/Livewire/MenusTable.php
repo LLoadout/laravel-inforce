@@ -17,15 +17,15 @@ class MenusTable extends DataTableComponent
     {
         $this->setPrimaryKey('id')
             ->setTableRowUrl(function ($row) {
-            return route('menu', $row);
-        });
+                return route('menu', $row);
+            });
     }
 
     public function builder(): Builder
     {
         return Menu::query()
-            ->when($this->columnSearch['name'] ?? null, fn($query, $value) => $query->where('menus.name', 'like', '%' . $value . '%'))
-            ->when($this->columnSearch['route'] ?? null, fn($query, $value) => $query->where('menus.route', 'like', '%' . $value . '%'))
+            ->when($this->columnSearch['name'] ?? null, fn ($query, $value) => $query->where('menus.name', 'like', '%' . $value . '%'))
+            ->when($this->columnSearch['route'] ?? null, fn ($query, $value) => $query->where('menus.route', 'like', '%' . $value . '%'))
             ->whereEditable(true);
     }
 

@@ -26,8 +26,8 @@ class UsersTable extends DataTableComponent
     public function builder(): Builder
     {
         return User::query()
-            ->when($this->columnSearch['name'] ?? null, fn($query, $value) => $query->where('name', 'like', '%' . $value . '%'))
-            ->when($this->columnSearch['email'] ?? null, fn($query, $value) => $query->where('email', 'like', '%' . $value . '%'));
+            ->when($this->columnSearch['name'] ?? null, fn ($query, $value) => $query->where('name', 'like', '%' . $value . '%'))
+            ->when($this->columnSearch['email'] ?? null, fn ($query, $value) => $query->where('email', 'like', '%' . $value . '%'));
     }
 
     public function columns(): array
