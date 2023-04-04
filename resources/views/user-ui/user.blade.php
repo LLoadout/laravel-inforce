@@ -12,7 +12,7 @@
 </x-slot>
 
 <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-    <x-jet-form-section submit="updateUser">
+    <x-form-section submit="updateUser">
         <x-slot name="title">
             {{ __('Profile information') }}
         </x-slot>
@@ -23,17 +23,17 @@
 
         <x-slot name="form">
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="name" value="{{ __('User name') }}"/>
-                <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="user.name" autocomplete="name"/>
-                <x-jet-input-error for="user.name" class="mt-2"/>
+                <x-label for="name" value="{{ __('User name') }}"/>
+                <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="user.name" autocomplete="name"/>
+                <x-input-error for="user.name" class="mt-2"/>
             </div>
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="email" value="{{ __('Email') }}"/>
-                <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="user.email" autocomplete="name"/>
-                <x-jet-input-error for="user.email" class="mt-2"/>
+                <x-label for="email" value="{{ __('Email') }}"/>
+                <x-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="user.email" autocomplete="name"/>
+                <x-input-error for="user.email" class="mt-2"/>
             </div>
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="role" value="{{ __('Role') }}"/>
+                <x-label for="role" value="{{ __('Role') }}"/>
                 <div class="bg-white rounded-md -space-y-px">
                 @foreach($roles as $role)
                     <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
@@ -48,27 +48,27 @@
                         </label>
                     @endforeach
                 </div>
-                <x-jet-input-error for="user.email" class="mt-2"/>
+                <x-input-error for="user.email" class="mt-2"/>
 
 
-                <x-jet-input-error for="role" class="mt-2"/>
+                <x-input-error for="role" class="mt-2"/>
             </div>
         </x-slot>
         @if($user->id)
             <x-slot name="actions">
-                <x-jet-action-message class="mr-3" on="saved">
+                <x-action-message class="mr-3" on="saved">
                     {{ __('Saved.') }}
-                </x-jet-action-message>
+                </x-action-message>
 
-                <x-jet-button wire:loading.attr="disabled">
+                <x-button wire:loading.attr="disabled">
                     {{ __('Save') }}
-                </x-jet-button>
+                </x-button>
             </x-slot>
         @endif
-    </x-jet-form-section>
-    <x-jet-section-border/>
+    </x-form-section>
+    <x-section-border/>
 
-    <x-jet-form-section submit="updatePassword">
+    <x-form-section submit="updatePassword">
         <x-slot name="title">
             {{ __('Password') }}
         </x-slot>
@@ -79,37 +79,37 @@
 
         <x-slot name="form">
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="password" value="{{ __('Password') }}"/>
-                <x-jet-input id="password" type="password" class="mt-1 block w-full" wire:model.defer="credentials.password" autocomplete="name"/>
-                <x-jet-input-error for="credentials.password" class="mt-2"/>
+                <x-label for="password" value="{{ __('Password') }}"/>
+                <x-input id="password" type="password" class="mt-1 block w-full" wire:model.defer="credentials.password" autocomplete="name"/>
+                <x-input-error for="credentials.password" class="mt-2"/>
             </div>
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm password') }}"/>
-                <x-jet-input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model.defer="credentials.password_confirmation" autocomplete="name"/>
-                <x-jet-input-error for="credentials.password_confirmation" class="mt-2"/>
+                <x-label for="password_confirmation" value="{{ __('Confirm password') }}"/>
+                <x-input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model.defer="credentials.password_confirmation" autocomplete="name"/>
+                <x-input-error for="credentials.password_confirmation" class="mt-2"/>
             </div>
         </x-slot>
         <x-slot name="actions">
-            <x-jet-action-message class="mr-3" on="saved">
+            <x-action-message class="mr-3" on="saved">
                 {{ __('Saved.') }}
-            </x-jet-action-message>
+            </x-action-message>
 
-            <x-jet-button wire:loading.attr="disabled">
+            <x-button wire:loading.attr="disabled">
                 {{ __('Save') }}
-            </x-jet-button>
+            </x-button>
         </x-slot>
-    </x-jet-form-section>
-    <x-jet-section-border/>
+    </x-form-section>
+    <x-section-border/>
     @if($showPerks)
         <div class="md:grid md:grid-cols-3 md:gap-6">
-            <x-jet-section-title>
+            <x-section-title>
                 <x-slot name="title">
                     {{ __('Permissions') }}
                 </x-slot>
                 <x-slot name="description">
                     {{ __('These are the user specific permissions , grayed out permissions are set via a role and cannot be changed for the user.') }}
                 </x-slot>
-            </x-jet-section-title>
+            </x-section-title>
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-md">
                     @include('LLoadoutInforce-views::user-ui.access')

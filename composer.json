@@ -13,7 +13,7 @@
         "php": "^7.4|^8.0|^8.1",
         "livewire/livewire": "^2.0",
         "spatie/laravel-package-tools": "^1.1",
-        "rappasoft/laravel-livewire-tables" : "^1.10"
+        "rappasoft/laravel-livewire-tables" : "^2.0"
 
     },
     "autoload": {

@@ -13,19 +13,26 @@ class MenusTable extends DataTableComponent
         'deleteSelected' => 'Delete selected',
     ];
 
-    public function query(): Builder
+    public function configure(): void
+    {
+        $this->setPrimaryKey('id');
+    }
+
+    public function builder(): Builder
     {
         return Menu::query()
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%')->orWhere('route', 'like', '%'.$term.'%'))->whereEditable(true);
+            ->when($this->columnSearch['name'] ?? null, fn($query, $value) => $query->where('menus.name', 'like', '%' . $value . '%'))
+            ->when($this->columnSearch['route'] ?? null, fn($query, $value) => $query->where('menus.route', 'like', '%' . $value . '%'))
+            ->whereEditable(true);
     }
 
     public function columns(): array
     {
         return [
             Column::make('Name', 'name')
-                ->sortable(),
+                ->sortable()->searchable(),
             Column::make('Route', 'route')
-                ->sortable(),
+                ->sortable()->searchable(),
         ];
     }
 

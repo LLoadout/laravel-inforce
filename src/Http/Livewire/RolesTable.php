@@ -5,6 +5,7 @@ namespace LLoadoutInforce\Http\Livewire;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 use Spatie\Permission\Models\Role;
 
 class RolesTable extends DataTableComponent
@@ -13,17 +14,23 @@ class RolesTable extends DataTableComponent
         'deleteSelected' => 'Delete selected',
     ];
 
-    public function query(): Builder
+    public function configure(): void
     {
+        $this->setPrimaryKey('id');
+    }
+
+    public function builder(): Builder
+    {
+
         return Role::query()
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%'));
+            ->when($this->columnSearch['name'] ?? null, fn ($query, $value) => $query->where('role.name', 'like', '%' . $value . '%'));
     }
 
     public function columns(): array
     {
         return [
             Column::make('Name', 'name')
-                ->sortable(),
+                ->sortable()->searchable(),
         ];
     }
 

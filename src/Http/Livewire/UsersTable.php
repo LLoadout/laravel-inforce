@@ -15,19 +15,25 @@ class UsersTable extends DataTableComponent
         'deleteSelected' => 'Delete selected',
     ];
 
-    public function query(): Builder
+    public function configure(): void
+    {
+        $this->setPrimaryKey('id');
+    }
+
+    public function builder(): Builder
     {
         return User::query()
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%')->orWhere('email', 'like', '%'.$term.'%'));
+            ->when($this->columnSearch['name'] ?? null, fn ($query, $value) => $query->where('name', 'like', '%'.$value.'%'))
+            ->when($this->columnSearch['email'] ?? null, fn ($query, $value) => $query->where('email', 'like', '%'.$value.'%'));
     }
 
     public function columns(): array
     {
         return [
             Column::make('Name', 'name')
-                ->sortable(),
+                ->sortable()->searchable(),
             Column::make('Email', 'email')
-                ->sortable(),
+                ->sortable()->searchable(),
         ];
     }
 

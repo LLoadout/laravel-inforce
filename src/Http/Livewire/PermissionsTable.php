@@ -15,17 +15,22 @@ class PermissionsTable extends DataTableComponent
         'deleteSelected' => 'Delete selected',
     ];
 
-    public function query(): Builder
+    public function configure(): void
+    {
+        $this->setPrimaryKey('id');
+    }
+
+    public function builder(): Builder
     {
         return Permission::query()
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%'))->whereEditable(true);
+            ->when($this->columnSearch['name'] ?? null, fn($query, $value) => $query->where('permissions.name', 'like', '%' . $value . '%'));
     }
 
     public function columns(): array
     {
         return [
             Column::make('Name', 'name')
-                ->sortable(),
+                ->sortable()->searchable(),
         ];
     }
 
