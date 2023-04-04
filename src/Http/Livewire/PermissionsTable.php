@@ -15,29 +15,34 @@ class PermissionsTable extends DataTableComponent
         'deleteSelected' => 'Delete selected',
     ];
 
-    public function query(): Builder
+    public function configure(): void
+    {
+        $this->setPrimaryKey('id')
+            ->setTableRowUrl(function ($row) {
+                return route('permission', $row);
+            });
+    }
+
+    public function builder(): Builder
     {
         return Permission::query()
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%'))->whereEditable(true);
+            ->when($this->columnSearch['name'] ?? null, fn($query, $value) => $query->where('permissions.name', 'like', '%' . $value . '%'));
     }
 
     public function columns(): array
     {
         return [
+            Column::make('ID', 'id'),
             Column::make('Name', 'name')
-                ->sortable(),
+                ->sortable()->searchable(),
         ];
-    }
-
-    public function getTableRowUrl($row): string
-    {
-        return route('permission', $row);
     }
 
     public function deleteSelected()
     {
-        if ($this->selectedRowsQuery->count() > 0) {
-            $this->selectedRowsQuery->delete();
+        if (filled($this->getSelected()) > 0) {
+            Permission::whereIn('id', $this->getSelected())->delete();
+            $this->clearSelected();
         }
     }
 }

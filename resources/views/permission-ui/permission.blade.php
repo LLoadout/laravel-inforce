@@ -11,7 +11,7 @@
     </h2>
 </x-slot>
 <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-    <x-jet-form-section submit="updatePermission">
+    <x-form-section submit="updatePermission">
         <x-slot name="title">
             {{ __('Permission') }}
         </x-slot>
@@ -28,19 +28,19 @@
 
         <x-slot name="form">
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="name" value="{{ __('Permission name') }}"/>
-                <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="permission.name" autocomplete="name"/>
-                <x-jet-input-error for="permission.name" class="mt-2"/>
+                <x-label for="name" value="{{ __('Permission name') }}"/>
+                <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="permission.name" autocomplete="name"/>
+                <x-input-error for="permission.name" class="mt-2"/>
             </div>
         </x-slot>
         <x-slot name="actions">
-            <x-jet-action-message class="mr-3" on="saved">
+            <x-action-message class="mr-3" on="saved">
                 {{ __('Saved.') }}
-            </x-jet-action-message>
+            </x-action-message>
 
-            <x-jet-button wire:loading.attr="disabled">
+            <x-button wire:loading.attr="disabled">
                 {{ __('Save') }}
-            </x-jet-button>
+            </x-button>
         </x-slot>
-    </x-jet-form-section>
+    </x-form-section>
 </div>

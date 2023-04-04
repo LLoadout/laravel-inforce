@@ -11,7 +11,7 @@
     </h2>
 </x-slot>
 <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-    <x-jet-form-section submit="updateRole">
+    <x-form-section submit="updateRole">
         <x-slot name="title">
             {{ __('Role') }}
         </x-slot>
@@ -22,36 +22,36 @@
 
         <x-slot name="form">
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="name" value="{{ __('Role name') }}"/>
-                <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="role.name" autocomplete="name"/>
-                <x-jet-input-error for="role.name" class="mt-2"/>
+                <x-label for="name" value="{{ __('Role name') }}"/>
+                <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="role.name" autocomplete="name"/>
+                <x-input-error for="role.name" class="mt-2"/>
             </div>
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="description" value="{{ __('Role description') }}"/>
-                <x-jet-input id="description" type="text" class="mt-1 block w-full" wire:model.defer="role.description" autocomplete="description"/>
-                <x-jet-input-error for="role.description" class="mt-2"/>
+                <x-label for="description" value="{{ __('Role description') }}"/>
+                <x-input id="description" type="text" class="mt-1 block w-full" wire:model.defer="role.description" autocomplete="description"/>
+                <x-input-error for="role.description" class="mt-2"/>
             </div>
         </x-slot>
         <x-slot name="actions">
-            <x-jet-action-message class="mr-3" on="saved">
+            <x-action-message class="mr-3" on="saved">
                 {{ __('Saved.') }}
-            </x-jet-action-message>
+            </x-action-message>
 
-            <x-jet-button wire:loading.attr="disabled" wire:target="photo">
+            <x-button wire:loading.attr="disabled" wire:target="photo">
                 {{ __('Save') }}
-            </x-jet-button>
+            </x-button>
         </x-slot>
-    </x-jet-form-section>
-    <x-jet-section-border/>
+    </x-form-section>
+    <x-section-border/>
     <div class="md:grid md:grid-cols-3 md:gap-6">
-        <x-jet-section-title>
+        <x-section-title>
             <x-slot name="title">
                 {{ __('Permissions') }}
             </x-slot>
             <x-slot name="description">
                 {{ __('These are the role specific permissions') }}
             </x-slot>
-        </x-jet-section-title>
+        </x-section-title>
         <div class="mt-5 md:mt-0 md:col-span-2">
             <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-md">
                 @include('LLoadoutInforce-views::user-ui.access')

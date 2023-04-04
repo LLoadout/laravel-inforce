@@ -4,9 +4,9 @@
     {{ __('Developer Menu') }}
 </div>
 <div class="border-t border-gray-100"></div>
-<x-jet-responsive-nav-link href="{{ route('developers.permissions') }}">
+<x-responsive-nav-link href="{{ route('developers.permissions') }}">
     {{ __('Permissions') }}
-</x-jet-responsive-nav-link>
-<x-jet-responsive-nav-link href="{{ route('developers.menus') }}">
+</x-responsive-nav-link>
+<x-responsive-nav-link href="{{ route('developers.menus') }}">
     {{ __('Menus') }}
-</x-jet-responsive-nav-link>
+</x-responsive-nav-link>

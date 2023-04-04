@@ -13,31 +13,38 @@ class MenusTable extends DataTableComponent
         'deleteSelected' => 'Delete selected',
     ];
 
-    public function query(): Builder
+    public function configure(): void
+    {
+        $this->setPrimaryKey('id')
+            ->setTableRowUrl(function ($row) {
+            return route('menu', $row);
+        });
+    }
+
+    public function builder(): Builder
     {
         return Menu::query()
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->where('name', 'like', '%'.$term.'%')->orWhere('route', 'like', '%'.$term.'%'))->whereEditable(true);
+            ->when($this->columnSearch['name'] ?? null, fn($query, $value) => $query->where('menus.name', 'like', '%' . $value . '%'))
+            ->when($this->columnSearch['route'] ?? null, fn($query, $value) => $query->where('menus.route', 'like', '%' . $value . '%'))
+            ->whereEditable(true);
     }
 
     public function columns(): array
     {
         return [
+            Column::make('ID', 'id'),
             Column::make('Name', 'name')
-                ->sortable(),
+                ->sortable()->searchable(),
             Column::make('Route', 'route')
-                ->sortable(),
+                ->sortable()->searchable(),
         ];
-    }
-
-    public function getTableRowUrl($row): string
-    {
-        return route('menu', $row);
     }
 
     public function deleteSelected()
     {
-        if ($this->selectedRowsQuery->count() > 0) {
-            $this->selectedRowsQuery->delete();
+        if (filled($this->getSelected()) > 0) {
+            Menu::whereIn('id', $this->getSelected())->delete();
+            $this->clearSelected();
         }
     }
 }
