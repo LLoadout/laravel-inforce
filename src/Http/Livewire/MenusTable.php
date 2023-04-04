@@ -15,7 +15,10 @@ class MenusTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')
+            ->setTableRowUrl(function ($row) {
+            return route('menu', $row);
+        });
     }
 
     public function builder(): Builder
@@ -29,6 +32,7 @@ class MenusTable extends DataTableComponent
     public function columns(): array
     {
         return [
+            Column::make('ID', 'id'),
             Column::make('Name', 'name')
                 ->sortable()->searchable(),
             Column::make('Route', 'route')
@@ -36,15 +40,11 @@ class MenusTable extends DataTableComponent
         ];
     }
 
-    public function getTableRowUrl($row): string
-    {
-        return route('menu', $row);
-    }
-
     public function deleteSelected()
     {
-        if ($this->selectedRowsQuery->count() > 0) {
-            $this->selectedRowsQuery->delete();
+        if (filled($this->getSelected()) > 0) {
+            Menu::whereIn('id', $this->getSelected())->delete();
+            $this->clearSelected();
         }
     }
 }

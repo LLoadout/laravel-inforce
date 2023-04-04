@@ -16,33 +16,32 @@ class RolesTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')
+            ->setTableRowUrl(function ($row) {
+                return route('role.edit', $row);
+            });
     }
 
     public function builder(): Builder
     {
-
         return Role::query()
-            ->when($this->columnSearch['name'] ?? null, fn ($query, $value) => $query->where('role.name', 'like', '%' . $value . '%'));
+            ->when($this->columnSearch['name'] ?? null, fn($query, $value) => $query->where('role.name', 'like', '%' . $value . '%'));
     }
 
     public function columns(): array
     {
         return [
+            Column::make('ID', 'id'),
             Column::make('Name', 'name')
                 ->sortable()->searchable(),
         ];
     }
 
-    public function getTableRowUrl($row): string
-    {
-        return route('role.edit', $row);
-    }
-
     public function deleteSelected()
     {
-        if ($this->selectedRowsQuery->count() > 0) {
-            $this->selectedRowsQuery->delete();
+        if (filled($this->getSelected()) > 0) {
+            Role::whereIn('id', $this->getSelected())->delete();
+            $this->clearSelected();
         }
     }
 }

@@ -17,19 +17,23 @@ class UsersTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')
+            ->setTableRowUrl(function ($row) {
+                return route('users.edit', $row);
+            });
     }
 
     public function builder(): Builder
     {
         return User::query()
-            ->when($this->columnSearch['name'] ?? null, fn ($query, $value) => $query->where('name', 'like', '%'.$value.'%'))
-            ->when($this->columnSearch['email'] ?? null, fn ($query, $value) => $query->where('email', 'like', '%'.$value.'%'));
+            ->when($this->columnSearch['name'] ?? null, fn($query, $value) => $query->where('name', 'like', '%' . $value . '%'))
+            ->when($this->columnSearch['email'] ?? null, fn($query, $value) => $query->where('email', 'like', '%' . $value . '%'));
     }
 
     public function columns(): array
     {
         return [
+            Column::make('ID', 'id'),
             Column::make('Name', 'name')
                 ->sortable()->searchable(),
             Column::make('Email', 'email')
@@ -37,15 +41,11 @@ class UsersTable extends DataTableComponent
         ];
     }
 
-    public function getTableRowUrl($row): string
-    {
-        return route('users.edit', $row);
-    }
-
     public function deleteSelected()
     {
-        if ($this->selectedRowsQuery->count() > 0) {
-            $this->selectedRowsQuery->delete();
+        if (filled($this->getSelected()) > 0) {
+            User::whereIn('id', $this->getSelected())->delete();
+            $this->clearSelected();
         }
     }
 }
