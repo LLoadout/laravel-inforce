@@ -31,7 +31,7 @@ class RolesTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id'),
+            Column::make('ID', 'id')->deselected(),
             Column::make('Name', 'name')
                 ->sortable()->searchable(),
         ];
