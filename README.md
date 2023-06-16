@@ -1,9 +1,9 @@
-![Tests](https://github.com/LLoadout/inforce/workflows/tests/badge.svg)
-![Downloads](https://img.shields.io/packagist/dt/lloadout/inforce.svg?style=flat-square)
-
 <p align="center">
     <img src="https://github.com/LLoadout/assets/blob/master/LLoadout_inforce.png" width="500" title="LLoadout logo">
 </p>
+
+![Tests](https://github.com/LLoadout/inforce/workflows/tests/badge.svg)
+![Downloads](https://img.shields.io/packagist/dt/lloadout/inforce.svg?style=flat-square)
 
 # LLoadout
 
