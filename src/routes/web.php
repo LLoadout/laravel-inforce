@@ -10,16 +10,18 @@ use LLoadoutInforce\Http\Livewire\Roles;
 use LLoadoutInforce\Http\Livewire\User;
 use LLoadoutInforce\Http\Livewire\Users;
 
-Route::middleware(['web', 'auth'])->group(function () {
-    Route::get('/users', Users::class)->name('users.index');
-    Route::get('/user/detail/{user?}', User::class)->whereNumber('id')->name('users.edit');
+Route::prefix('admin')->group(function () {
+    Route::middleware(['web', 'auth'])->group(function () {
+        Route::get('/users', Users::class)->name('users.index');
+        Route::get('/user/detail/{user?}', User::class)->whereNumber('id')->name('users.edit');
 
-    Route::get('/roles', Roles::class)->name('users.roles');
-    Route::get('/role/{role?}', Role::class)->name('role.edit');
-    
-    Route::get('/permissions', Permissions::class)->name('developers.permissions');
-    Route::get('/permission/{permission?}', Permission::class)->name('permission');
+        Route::get('/roles', Roles::class)->name('users.roles');
+        Route::get('/role/{role?}', Role::class)->name('role.edit');
 
-    Route::get('/menus', Menus::class)->name('developers.menus');
-    Route::get('/menu/{menu?}', Menu::class)->name('menu');
+        Route::get('/permissions', Permissions::class)->name('developers.permissions');
+        Route::get('/permission/{permission?}', Permission::class)->name('permission');
+
+        Route::get('/menus', Menus::class)->name('developers.menus');
+        Route::get('/menu/{menu?}', Menu::class)->name('menu');
+    });
 });
